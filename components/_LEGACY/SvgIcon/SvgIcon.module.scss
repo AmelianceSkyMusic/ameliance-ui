@@ -1,0 +1,52 @@
+@use "../../styles/globals/" as *;
+@use "SvgIcon.root" as *;
+
+.SvgIcon {
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+	width: var(--icon__width);
+	height: var(--icon__height);
+	color: var(--icon__color);
+	user-select: none;
+	background-color: var(--icon__color);
+	border: none;
+
+	mask-repeat: no-repeat;
+	mask-size: contain;
+
+	@include size-large {
+		width: var(--icon-large__width);
+		height: var(--icon-large__height);
+	}
+
+	@include size-medium {
+		width: var(--icon-medium__width);
+		height: var(--icon-medium__height);
+	}
+
+	@include size-small {
+		width: var(--icon-small__width);
+		height: var(--icon-small__height);
+	}
+
+	@include inverted {
+		color: var(--icon__color_inverted);
+		background-color: var(--icon__color_inverted_hover);
+	}
+
+	@include clickable {
+		@include hover {
+			background-color: var(--icon__color_hover);
+		}
+
+		@include hover-animation;
+
+		@include active {
+			background-color: var(--icon__color_active);
+		}
+	}
+
+	@include disabled;
+}

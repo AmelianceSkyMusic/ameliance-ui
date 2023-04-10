@@ -1,0 +1,50 @@
+.LoaderLine {
+	z-index: 10000;
+	display: grid;
+	height: 4px;
+	width: 48px;
+
+	& > * {
+		grid-area: 1 / 1;
+	}
+
+	.background {
+		opacity: 30%;
+	}
+
+	&.normal {
+		.animation {
+			background: linear-gradient(var(--color--f1-1) 0 0), linear-gradient(var(--color--f1-1) 0 0);
+			background-size: 60% 100%;
+			background-repeat: no-repeat;
+			animation: loader 2s infinite ease-in-out;
+		}
+		.background {
+			background-color: var(--color--f1-1);
+		}
+	}
+
+	&.inversion {
+		.animation {
+			background: linear-gradient(var(--color--f2-1) 0 0), linear-gradient(var(--color--f2-1) 0 0);
+			background-size: 60% 100%;
+			background-repeat: no-repeat;
+			animation: loader 2s infinite ease-in-out;
+		}
+		.background {
+			background-color: var(--color--f2-1);
+		}
+	}
+}
+
+@keyframes loader {
+	0% {
+		background-position: -150% 0, -150% 0;
+	}
+	66% {
+		background-position: 250% 0, -150% 0;
+	}
+	100% {
+		background-position: 250% 0, 250% 0;
+	}
+}

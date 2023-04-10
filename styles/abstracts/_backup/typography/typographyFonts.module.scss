@@ -1,0 +1,38 @@
+@use "typography-fonts__root" as *;
+@use "typography-fonts__mixins" as *;
+@use "typography-fonts__variables" as *;
+
+$setTypo-elements: (
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p1,
+	p2,
+	subtitle1,
+	subtitle2,
+	caption,
+	overline,
+	button,
+	button-sm,
+	button-icon,
+	button-icon-sm,
+	link,
+	link-sm,
+	input
+);
+
+@each $item in $setTypo-elements {
+	.#{$item} {
+		@include setFont(
+			var(--typography__font-family_ + $item),
+			var(--typography__font-size_ + $item),
+			var(--typography__font-weight_ + $item),
+			var(--typography__line-height_ + $item),
+			var(--typography__letter-spacing_ + $item),
+			var(--typography__font-style_ + $item)
+		);
+	}
+} ;

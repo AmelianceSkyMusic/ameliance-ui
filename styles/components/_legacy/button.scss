@@ -1,0 +1,96 @@
+@use "../globals/" as *;
+@use "button__variables" as *;
+
+.button,
+.button-sm {
+	// mix-blend-mode: multiply;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// text-align: center;
+	// vertical-align: middle;
+	padding: 0 var(--size__button-side-padding);
+	height: var(--size__button-height);
+	color: var(--color__button);
+	background-color: var(--background__button);
+	border: none;
+	border-radius: var(--radius__button);
+	cursor: pointer;
+	user-select: none;
+
+	& .label {
+		text-align: center;
+		vertical-align: middle;
+		height: 24px;
+	}
+
+	& .icon.left,
+	& .icon-sm.left,
+	& .icon.right,
+	& .icon-sm.right {
+		background-color: var(--color__button);
+	}
+
+	& .icon.right {
+		margin-left: 4px;
+		margin-right: -2px;
+	}
+
+	& .icon.left {
+		margin-left: -2px;
+		margin-right: 4px;
+	}
+
+	@include hover {
+		color: var(--color__button_hover);
+		background-color: var(--background__button_hover);
+	}
+	@include animation-hover;
+	@include active {
+		color: var(--color__button_active);
+		background-color: var(--background__button_active);
+		transition: 0s;
+	}
+
+	@include disabled {
+		opacity: 60%;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+}
+
+.button.secondary,
+.button-sm.secondary {
+	color: var(--color__button-secondary);
+	background: none;
+	border: var(--border__button) solid var(--border__button-secondary);
+
+	& .icon.left,
+	& .icon-sm.left,
+	& .icon.right,
+	& .icon-sm.right {
+		background-color: var(--color__button-secondary);
+	}
+
+	@include hover {
+		color: var(--color__button-secondary_hover);
+		border: var(--border__button) solid var(--border__button-secondary_hover);
+		& .icon.left,
+		& .icon-sm.left,
+		& .icon.right,
+		& .icon-sm.right {
+			background-color: var(--border__button-secondary_hover);
+		}
+	}
+	@include active {
+		color: var(--color__button-secondary_active);
+		border: var(--border__button) solid var(--border__button-secondary_active);
+		& .icon.left,
+		& .icon-sm.left,
+		& .icon.right,
+		& .icon-sm.right {
+			background-color: var(--border__button-secondary_active);
+		}
+	}
+}

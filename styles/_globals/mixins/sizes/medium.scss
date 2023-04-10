@@ -1,0 +1,5 @@
+@mixin size-medium {
+	&.medium {
+		@content;
+	}
+}

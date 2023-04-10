@@ -1,0 +1,37 @@
+@use "../globals/" as *;
+@use "icon__variables" as *;
+
+.icon,
+.icon-sm {
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+	width: 24px;
+	height: 24px;
+	color: var(--icon__color);
+	user-select: none;
+	border: none;
+
+	background-color: var(--icon__color);
+	-webkit-mask-repet: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+
+	&.inversion {
+		color: var(--icon-inversion__color);
+		background-color: var(--icon-inversion__color);
+	}
+
+	&.clickable {
+		cursor: pointer;
+		&:disabled,
+		&.disabled,
+		&[data-is-disabled="true"] {
+			opacity: 60%;
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+}

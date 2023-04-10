@@ -1,0 +1,5 @@
+@mixin size-large {
+	&.large {
+		@content;
+	}
+}

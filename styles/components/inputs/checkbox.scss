@@ -1,0 +1,36 @@
+input[type="checkbox"] {
+   -webkit-appearance: none;
+   appearance: none;
+   background-color: none;
+   margin: 0;
+   cursor: pointer;
+
+   font: inherit;
+   color: var(--color--f1-1);
+   width: 14px;
+   height: 14px;
+   border: 1px solid var(--color--f1-1);
+   border-radius: 2px;
+
+   display: grid;
+   place-content: center;
+
+   & + label {
+      cursor: pointer;
+   }
+
+   &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      transform: scale(0);
+      border-radius: 2px;
+      transition: 120ms transform ease-in-out;
+      background-color: var(--color--f1-1);
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+   }
+
+   &:checked::before {
+      transform: scale(1);
+   }
+}

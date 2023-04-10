@@ -1,0 +1,14 @@
+.inputContainer {
+	position: relative;
+}
+
+.input {
+	padding-right: 40px;
+}
+
+.icon {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}

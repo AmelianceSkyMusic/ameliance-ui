@@ -1,0 +1,9 @@
+.button-icon-sm {
+	width: 34px;
+	height: 34px;
+	flex: 0 0 auto; // fix with https://stackoverflow.com/questions/56460249/force-one-div-to-change-size-of-other-div-inside-the-same-parent-so-the-first-o
+	& .icon {
+		height: 18px;
+		width: 18px;
+	}
+}

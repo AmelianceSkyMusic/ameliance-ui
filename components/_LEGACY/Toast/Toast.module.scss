@@ -1,0 +1,123 @@
+@use "../../styles/globals/" as *;
+
+.Toast {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	min-width: 30vw;
+	max-width: calc(100vw - ((var(--gap) * 2)));
+	max-height: 20vh;
+	padding: calc(var(--gap) / 2);
+	background-color: var(--color--b1-2);
+	border-radius: 12px;
+	opacity: 0%;
+	transform: translateY(4px);
+	pointer-events: auto;
+	@extend %box-shadow--default;
+
+	&:has(.oneLine) {
+		align-items: center;
+	}
+
+	&.medium {
+		width: 50vw;
+		@include screen-md {
+			width: 70vw;
+		}
+	}
+
+	&.large {
+		width: calc(100vw - ((var(--gap) * 2)));
+	}
+
+	&.success {
+		@extend %success;
+	}
+
+	&.info {
+		@extend %info;
+	}
+
+	&.error {
+		@extend %error;
+	}
+
+	&.warn {
+		@extend %warn;
+	}
+}
+
+.content {
+	width: 100%;
+	display: flex;
+	gap: 8px;
+	&:has(.oneLine) {
+		align-items: center;
+	}
+}
+
+.textContent {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+
+	&.oneLine {
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.title {
+		display: flex;
+		justify-content: space-between;
+	}
+	.message {
+		display: flex;
+	}
+}
+
+.topLeft {
+	animation: 0.3s ease-out forwards top-animation-show;
+}
+
+.topCenter {
+	animation: 0.3s ease-out forwards top-animation-show;
+}
+
+.topRight {
+	animation: 0.3s ease-out forwards top-animation-show;
+}
+
+@keyframes top-animation-show {
+	0% {
+		opacity: 0%;
+		transform: translateY(16px);
+	}
+	100% {
+		opacity: 100%;
+		transform: translateY(0px);
+	}
+}
+
+.bottomLeft {
+	animation: 0.3s ease-out forwards bottom-animation-show;
+}
+
+.bottomCenter {
+	animation: 0.3s ease-out forwards bottom-animation-show;
+}
+
+.bottomRight {
+	animation: 0.3s ease-out forwards bottom-animation-show;
+}
+
+@keyframes bottom-animation-show {
+	0% {
+		opacity: 0%;
+		transform: translateY(-16px);
+	}
+	100% {
+		opacity: 100%;
+		transform: translateY(0px);
+	}
+}

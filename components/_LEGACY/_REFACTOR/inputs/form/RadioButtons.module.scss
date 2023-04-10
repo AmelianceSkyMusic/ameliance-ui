@@ -1,0 +1,23 @@
+.RadioButtons {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+}
+
+.container {
+	height: 16px;
+	display: flex;
+	column-gap: 16px;
+}
+
+.error {
+	min-height: 18px;
+}
+
+.radioButtonContainer {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	cursor: pointer;
+}

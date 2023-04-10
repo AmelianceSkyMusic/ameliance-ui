@@ -1,0 +1,31 @@
+input[type="radio"] {
+	// Remove most all native input styles
+	-webkit-appearance: none;
+	appearance: none;
+	// For iOS < 15
+	background-color: none;
+	// Not removed via appearance
+	margin: 0;
+
+	width: 14px;
+	height: 14px;
+	border: 1px solid var(--color__f1_1);
+	border-radius: 50%;
+
+	display: grid;
+	place-content: center;
+}
+
+input[type="radio"]::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	transform: scale(0);
+	transition: transform 0.2s ease-in-out;
+	box-shadow: inset 1em 1em var(--color__f1_1);
+}
+
+input[type="radio"]:checked::before {
+	transform: scale(100%);
+}

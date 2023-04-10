@@ -1,0 +1,73 @@
+@use "../../styles/globals/" as *;
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	@include clickable;
+}
+
+.Menu {
+	width: max-content;
+	position: absolute;
+	display: flex;
+	background-color: var(--color--b1-2);
+	padding: 16px 0;
+	border-radius: 16px;
+	@extend %box-shadow--default;
+	@include screen-md {
+		gap: 4px;
+	}
+	animation-name: hide-menu;
+	animation-duration: 0.2s;
+	animation-fill-mode: forwards;
+	&.show {
+		animation-name: show-menu;
+		animation-duration: 0.2s;
+		animation-fill-mode: forwards;
+	}
+	z-index: 1000;
+}
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(50%, -50%);
+}
+
+.menuItems {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	@include screen-md {
+		gap: 4px;
+	}
+}
+
+@keyframes show-menu {
+	0% {
+		opacity: 0;
+		transform: scale(50%);
+	}
+	100% {
+		opacity: 100%;
+		transform: scale(100%);
+	}
+}
+
+@keyframes hide-menu {
+	0% {
+		opacity: 100%;
+		transform: scale(100%);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(50%);
+	}
+}

@@ -1,0 +1,25 @@
+.FileImgUpload {
+	display: inline-flex;
+	flex-direction: column;
+	row-gap: 8px;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 8px;
+}
+
+.input {
+	display: none;
+}
+
+.error {
+	min-height: 18px;
+}
+
+.imgPreview {
+	height: 24px;
+	object-fit: contain;
+}

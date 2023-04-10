@@ -1,0 +1,58 @@
+.LoaderCounter {
+	width: 24px;
+	height: 24px;
+	display: grid;
+
+	& > * {
+		grid-area: 1 / 1;
+	}
+
+	.counter {
+		position: relative;
+		align-self: center;
+		justify-self: center;
+	}
+
+	.background {
+		display: flex;
+		width: 24px;
+		height: 24px;
+		background-color: var(--color--f1-1);
+		border-radius: 50%;
+		opacity: 5%;
+	}
+
+	.animation {
+		--loader-counter--animation-duration: 3000ms;
+		position: relative;
+		align-self: center;
+		justify-self: center;
+		transform: rotate(45deg);
+		&::before {
+			content: "";
+			position: absolute;
+			inset: -12px;
+			border-radius: 50%;
+			border: 3px solid var(--color--f1-1);
+			animation: loader-animation forwards linear;
+			animation-duration: var(--loader-counter--animation-duration);
+		}
+	}
+}
+@keyframes loader-animation {
+	0% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	}
+	25% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+	}
+	50% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+	}
+	75% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+	}
+	100% {
+		clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+	}
+}

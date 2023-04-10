@@ -1,0 +1,72 @@
+@use "~/asmlib/styles/globals/" as *;
+
+.Menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include clickable;
+}
+
+.menuContainer {
+	position: absolute;
+	display: flex;
+	// flex-direction: column;
+	background-color: var(--color--b1-2);
+	padding: 16px 0;
+	border-radius: 16px;
+	@extend %box-shadow--default;
+	@include screen-md {
+		gap: 4px;
+	}
+	transform: scale(50%);
+	animation-name: hide-menu;
+	animation-duration: 0.2s;
+	animation-fill-mode: forwards;
+	:global(.show) & {
+		transform: scale(100%);
+		animation-name: show-menu;
+		animation-duration: 0.2s;
+		animation-fill-mode: forwards;
+	}
+}
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(50%, -50%);
+}
+
+.menuItems {
+	list-style: none;
+}
+
+@keyframes show-menu {
+	from {
+		opacity: 0;
+		transform: scale(50%);
+	}
+	to {
+		opacity: 100%;
+		transform: scale(100%);
+	}
+}
+
+@keyframes hide-menu {
+	from {
+		opacity: 100%;
+		transform: scale(100%);
+	}
+	to {
+		opacity: 0;
+		transform: scale(50%);
+	}
+}

@@ -1,0 +1,28 @@
+.img {
+	width: 54px;
+	height: 54px;
+	border-radius: 50%;
+	object-fit: cover;
+	&.small {
+		width: 36px;
+		height: 36px;
+	}
+}
+
+.charContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 54px;
+	height: 54px;
+	border-radius: 50%;
+	background-color: var(--color--e1-0);
+	color: var(--color--f2-0);
+	.char {
+		opacity: 70%;
+	}
+	&.small {
+		width: 36px;
+		height: 36px;
+	}
+}

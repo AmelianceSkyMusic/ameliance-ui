@@ -1,0 +1,33 @@
+// xx: 1180 (<2147483647) Set default
+// xl: 1024
+// lg: 768
+// md: 540
+// sm: 480
+// xs: 360
+// ss: 320 (0-359);
+
+:root {
+	--screen-xx: 2147483647px;
+	--screen-xl: 1179px;
+	--screen-lg: 1023px;
+	--screen-md: 767px;
+	--screen-sm: 539px;
+	--screen-xs: 479px;
+	--screen-ss: 359px;
+}
+
+$screen-xx: 2147483647px;
+$screen-xl: 1179px;
+$screen-lg: 1023px;
+$screen-md: 767px;
+$screen-sm: 539px;
+$screen-xs: 479px;
+$screen-ss: 359px;
+
+// xx: <2147483647 Set default
+// xl: <1180
+// lg: <1024
+// md: <768
+// sm: <540
+// xs: <480
+// ss: <360

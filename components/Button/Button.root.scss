@@ -1,0 +1,71 @@
+html[data-theme="dark"] {
+	--button__color: var(--color--f1-1);
+	--button__color_hover: var(--color--f1-1);
+	--button__color_active: var(--color--f1-1);
+}
+
+:root {
+	--button__color: var(--color--f2-1);
+	--button__color_hover: var(--color--f2-1);
+	--button__color_active: var(--color--f2-1);
+
+	--button__background: var(--color--e1-1);
+	--button__background_hover: var(--color--e1-2);
+	--button__background_active: var(--color--e1-0);
+
+	--button__border: var(--color--f1-1);
+	--button__border_hover: var(--color--f1-2);
+	--button__border_active: var(--color--f1-0);
+
+	--button-secondary__color: var(--color--f1-1);
+	--button-secondary__color_hover: var(--color--f1-2);
+	--button-secondary__color_active: var(--color--f1-0);
+
+	--button-secondary__border: none;
+	--button-secondary__border_hover: none;
+	--button-secondary__border_active: none;
+
+	--button-secondary__background: var(--color--e2-1);
+	--button-secondary__background_hover: var(--color--e2-2);
+	--button-secondary__background_active: var(--color--e2-0);
+
+	--button-text__color: var(--color--f1-1);
+	--button-text__color_hover: var(--color--f1-2);
+	--button-text__color_active: var(--color--f1-0);
+
+	--button-text__background: none;
+	--button-text__background_hover: var(--color--e2-2);
+	--button-text__background_active: var(--color--e2-0);
+
+	--button__radius: 12px;
+	--button__border-size: 1px;
+	--button__side-padding: 16px;
+
+	--button__font-size_tiny: 10px;
+	--button__font-size_small: 14px;
+	--button__font-size_default: 18px;
+	--button__font-size_medium: 24px;
+	--button__font-size_large: 32px;
+	--button__font-size_extra: 36px;
+
+	--button__height_tiny: 24px;
+	--button__height_small: 32px;
+	--button__height_default: 42px;
+	--button__height_medium: 48px;
+	--button__height_large: 56px;
+	--button__height_extra: 80px;
+
+	--button__width_tiny: var(--button__height_tiny);
+	--button__width_small: var(--button__height_small);
+	--button__width_default: var(--button__height_default);
+	--button__width_medium: var(--button__height_medium);
+	--button__width_large: var(--button__height_large);
+	--button__width_extra: var(--button__height_extra);
+
+	--button__label-height_tiny: 12px;
+	--button__label-height_small: 18px;
+	--button__label-height_default: 24px;
+	--button__label-height_medium: 36px;
+	--button__label-height_large: 42px;
+	--button__label-height_extra: 64px;
+}

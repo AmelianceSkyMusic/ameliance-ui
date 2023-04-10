@@ -1,0 +1,46 @@
+@use "../globals/" as *;
+@use "scroll__variables" as *;
+
+.scroll {
+	&::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+		background-color: var(--scroll-color--track);
+		@include screen-md {
+			& {
+				width: 6px;
+				height: 6px;
+			}
+		}
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--scroll-color--track);
+	}
+	&::-webkit-scrollbar-thumb {
+		background: var(--scroll-color--thumb);
+		border-radius: var(--scroll-radius--border);
+		border: 0px solid var(--scroll-color--track);
+	}
+}
+
+.scroll-transparent {
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+		background-color: none;
+		@include screen-md {
+			& {
+				width: 6px;
+				height: 6px;
+			}
+		}
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--scroll-color--track);
+	}
+	&::-webkit-scrollbar-thumb {
+		background: none;
+		border-radius: var(--scroll-radius--border);
+		border: 1px solid none;
+	}
+}

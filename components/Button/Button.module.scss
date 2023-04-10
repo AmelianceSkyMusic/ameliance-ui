@@ -1,0 +1,154 @@
+@use "../../styles/globals/" as *;
+@use "Button.root" as *;
+
+.Button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 var(--button__side-padding);
+	color: var(--button__color);
+	user-select: none;
+	border-radius: var(--button__radius);
+	background: none;
+	border: none;
+
+	background-color: var(--button__background);
+
+	@include size-tiny {
+		height: var(--button__height_tiny);
+	}
+
+	@include size-small {
+		height: var(--button__height_small);
+	}
+
+	@include size-default {
+		height: var(--button__height_default);
+	}
+
+	@include size-medium {
+		height: var(--button__height_medium);
+	}
+
+	@include size-large {
+		height: var(--button__height_large);
+	}
+
+	@include size-extra {
+		height: var(--button__height_extra);
+	}
+
+	@include clickable;
+
+	@include hover-animation;
+
+	@include disabled;
+
+	@include hover {
+		background-color: var(--button__background_hover);
+	}
+
+	@include active {
+		background-color: var(--button__background_active);
+	}
+
+	.label {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 8px;
+		height: var(--button__label-height);
+		color: inherit;
+		opacity: 100%;
+
+		// @include size-small {
+		// 	height: var(--button__label-height_small);
+		// }
+
+		// @include size-medium {
+		// 	height: var(--button__label-height_medium);
+		// }
+
+		// @include size-large {
+		// 	height: var(--button__label-height_large);
+		// }
+
+		@include size-tiny {
+			font-size: var(--button__font-size_tiny);
+		}
+
+		@include size-small {
+			font-size: var(--button__font-size_small);
+		}
+
+		@include size-default {
+			font-size: var(--button__font-size_default);
+		}
+
+		@include size-medium {
+			font-size: var(--button__font-size_medium);
+		}
+
+		@include size-large {
+			font-size: var(--button__font-size_large);
+		}
+
+		@include size-extra {
+			font-size: var(--button__font-size_extra);
+		}
+	}
+
+	&.icon {
+		padding: 0;
+		border-radius: 50%;
+		flex-shrink: 0;
+
+		@include size-tiny {
+			width: var(--button__width_tiny);
+		}
+
+		@include size-small {
+			width: var(--button__width_small);
+		}
+
+		@include size-default {
+			width: var(--button__width_default);
+		}
+
+		@include size-medium {
+			width: var(--button__width_medium);
+		}
+
+		@include size-large {
+			width: var(--button__width_large);
+		}
+
+		@include size-extra {
+			width: var(--button__width_extra);
+		}
+	}
+}
+
+.secondary {
+	background: none;
+	color: var(--button-secondary__color);
+	border: var(--button__border-size) solid var(--button-secondary__border);
+	background-color: var(--button-secondary__background);
+	@include hover {
+		background-color: var(--button-secondary__background_hover);
+	}
+	@include active {
+		background-color: var(--button-secondary__background_active);
+	}
+}
+
+.text {
+	background: none;
+	color: var(--button-text__color);
+	@include hover {
+		background-color: var(--button-text__background_hover);
+	}
+	@include active {
+		background-color: var(--button-text__background_active);
+	}
+}

@@ -1,0 +1,63 @@
+.Switcher {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 4px;
+}
+
+.container {
+	display: inline-block;
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	margin-top: 6px;
+	height: 16px;
+	cursor: pointer;
+
+	// &:hover .switcher__element:before {
+	//   background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+	// }
+}
+
+.element {
+	display: inline-block;
+	border-radius: 16px;
+	width: 24px;
+	height: 14px;
+	border: 1px solid var(--color--f1-1);
+	position: relative;
+	vertical-align: middle;
+	transition: background-color 0.2s;
+	&:before,
+	&:after {
+		content: "";
+	}
+	&:before {
+		display: block;
+		// background-color: var(--color--f1-1);
+		border: 1px solid var(--color--f1-1);
+		border-radius: 50%;
+		width: 8px;
+		height: 8px;
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		transition: left 0.25s;
+	}
+}
+
+.switcherCheckbox {
+	position: absolute;
+	visibility: hidden;
+	&:checked + .switcher__element {
+		background-color: none;
+	}
+	&:checked + .switcher__element:before {
+		background-color: var(--color--f1-1);
+		left: 12px;
+	}
+}
+
+.error {
+	min-height: 18px;
+}

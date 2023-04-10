@@ -1,0 +1,20 @@
+.List {
+	display: inline-flex;
+	flex-direction: column;
+	// row-gap: 4px;
+}
+
+.unordered {
+	& > * {
+		list-style-type: disc;
+		color: var(--color--f1-1);
+		margin-left: 36px;
+	}
+}
+
+.custom {
+	& > * {
+		color: var(--color--f1-1);
+		margin-left: 36px;
+	}
+}

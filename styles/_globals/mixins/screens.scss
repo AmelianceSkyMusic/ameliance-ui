@@ -1,0 +1,43 @@
+@use "../screen-variables/" as *;
+
+@mixin screen-xx {
+	@media screen and (max-width: $screen-xx) {
+		@content;
+	}
+}
+
+@mixin screen-xl {
+	@media screen and (max-width: $screen-xl) {
+		@content;
+	}
+}
+
+@mixin screen-lg {
+	@media screen and (max-width: $screen-lg) {
+		@content;
+	}
+}
+
+@mixin screen-md {
+	@media screen and (max-width: $screen-md) {
+		@content;
+	}
+}
+
+@mixin screen-sm {
+	@media screen and (max-width: $screen-sm) {
+		@content;
+	}
+}
+
+@mixin screen-xs {
+	@media screen and (max-width: $screen-xs) {
+		@content;
+	}
+}
+
+@mixin screen-ss {
+	@media screen and (max-width: $screen-ss) {
+		@content;
+	}
+}

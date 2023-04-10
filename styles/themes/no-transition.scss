@@ -1,0 +1,6 @@
+body.no-transition * {
+	transition: none !important;
+	animation: none !important;
+	animation-duration: 0s !important;
+	-webkit-animation-duration: 0s !important;
+}

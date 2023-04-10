@@ -1,0 +1,43 @@
+.ToastList {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: var(--gap);
+	pointer-events: none;
+}
+
+.topLeft {
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.topCenter {
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.topRight {
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+.bottomLeft {
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+
+.bottomCenter {
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.bottomRight {
+	justify-content: flex-end;
+	align-items: flex-end;
+}

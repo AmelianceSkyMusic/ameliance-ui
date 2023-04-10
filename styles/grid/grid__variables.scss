@@ -1,0 +1,61 @@
+@use "../globals/" as *;
+
+:root {
+	--gap: var(--screen--gap);
+	--col-gap: var(--screen--col-gap);
+	--col-outer: var(--screen--col-outer);
+
+	--container-width: calc(var(--screen--container__width) + (var(--col-outer) * 2));
+
+	--gap--1: 1px;
+	--gap--2: 2px;
+	--gap--4: 4px;
+	--gap--8: 8px;
+	--gap--12: 12px;
+	--gap--16: 16px;
+	--gap--24: 24px;
+	--gap--28: 28px;
+	--gap--32: 32px;
+	--gap--40: 40px;
+	--gap--48: 48px;
+	--gap--56: 56px;
+	--gap--72: 72px;
+	--gap--80: 80px;
+	--gap--96: 96px;
+
+	@include screen-xx {
+		--gap: var(--screen--gap__xx);
+		--col-gap: var(--screen--col-gap__xx);
+		--col-outer: var(--screen--col-outer__xx);
+	}
+	@include screen-xl {
+		--gap: var(--screen--gap__xl);
+		--col-gap: var(--screen--col-gap__xl);
+		--col-outer: var(--screen--col-outer__xl);
+	}
+	@include screen-lg {
+		--gap: var(--screen--gap__lg);
+		--col-gap: var(--screen--col-gap__lg);
+		--col-outer: var(--screen--col-outer__lg);
+	}
+	@include screen-md {
+		--gap: var(--screen--gap__md);
+		--col-gap: var(--screen--col-gap__md);
+		--col-outer: var(--screen--col-outer__md);
+	}
+	@include screen-sm {
+		--gap: var(--screen--gap__sm);
+		--col-gap: var(--screen--col-gap__sm);
+		--col-outer: var(--screen--col-outer__sm);
+	}
+	@include screen-xs {
+		--gap: var(--screen--gap__xs);
+		--col-gap: var(--screen--col-gap__xs);
+		--col-outer: var(--screen--col-outer__xs);
+	}
+	@include screen-ss {
+		--gap: var(--screen--gap__ss);
+		--col-gap: var(--screen--col-gap__ss);
+		--col-outer: var(--screen--col-outer__ss);
+	}
+}

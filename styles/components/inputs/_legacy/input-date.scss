@@ -1,0 +1,11 @@
+@use "../../globals/" as *;
+
+.input.date {
+	border: none;
+	border-bottom: 2px solid var(--color--f1-1);
+	padding: 8px 10px;
+	background: transparent;
+	// @media (max-width: $screen-xs) {
+	// 	width: 300px;
+	// }
+}

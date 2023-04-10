@@ -1,0 +1,39 @@
+@use "../../../styles/globals/" as *;
+
+.ToastsContainer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	flex-direction: column;
+	padding: 8px;
+	gap: 8px;
+	@include no-events;
+
+	&.left-top {
+		align-items: flex-start;
+	}
+
+	&.center-top {
+		align-items: center;
+	}
+
+	&.left-bottom {
+		justify-content: flex-end;
+		align-items: flex-start;
+	}
+
+	&.center-bottom {
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	&.right-bottom {
+		justify-content: flex-end;
+	}
+}
