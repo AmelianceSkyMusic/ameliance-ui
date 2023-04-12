@@ -7,9 +7,9 @@ export function AlertOctagonIcon(props: SvgIconProps) {
 			fill="none"
 			{...props}
 		>
-			<polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />
-			<line x1="12" y1="8" x2="12" y2="12" />
-			<line x1="12" y1="16" x2="12.01" y2="16" />
+			<path d="M7.86 2H16.14L22 7.86V16.14L16.14 22H7.86L2 16.14V7.86L7.86 2Z" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M12 8V12" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M12 16H12.01" strokeLinecap="round" strokeLinejoin="round" />
 		</SvgIcon>
 	);
 }

@@ -16,17 +16,19 @@
 
 	@include hover-animation;
 
-	@include hover {
-		color: var(--color__link_hover);
-		text-decoration: underline;
-		text-underline-offset: 4px;
+	&.hover {
+		@include hover {
+			color: var(--color__link_hover);
+			text-decoration: underline;
+			text-underline-offset: 4px;
 
-		&.noUnderline {
-			text-decoration: none;
-		}
+			&.noUnderline {
+				text-decoration: none;
+			}
 
-		@include inverted {
-			color: var(--color__link-inversion_hover);
+			@include inverted {
+				color: var(--color__link-inversion_hover);
+			}
 		}
 	}
 

@@ -7,12 +7,12 @@ export function ListIcon(props: SvgIconProps) {
 			fill="none"
 			{...props}
 		>
-			<line x1="8" y1="6" x2="21" y2="6" />
-			<line x1="8" y1="12" x2="21" y2="12" />
-			<line x1="8" y1="18" x2="21" y2="18" />
-			<line x1="3" y1="6" x2="3.01" y2="6" />
-			<line x1="3" y1="12" x2="3.01" y2="12" />
-			<line x1="3" y1="18" x2="3.01" y2="18" />
+			<path d="M8 6H21" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M8 12H21" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M8 18H21" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M3 6H3.01" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M3 12H3.01" strokeLinecap="round" strokeLinejoin="round" />
+			<path d="M3 18H3.01" strokeLinecap="round" strokeLinejoin="round" />
 		</SvgIcon>
 	);
 }

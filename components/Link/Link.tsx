@@ -11,12 +11,14 @@ export interface LinkProps extends ReactHTMLElementAttributes<
 LinkElement, React.AnchorHTMLAttributes<LinkElement>> {
 	display?: TypographyVariants;
 	underline?: boolean;
+	hover?: boolean;
 	blank?: boolean;
 }
 
 export const Link = forwardRef<LinkElement, LinkProps>(({
 	display,
 	underline,
+	hover = true,
 	children,
 	blank,
 	className,
@@ -25,7 +27,8 @@ export const Link = forwardRef<LinkElement, LinkProps>(({
 	// *----- create class from props -----
 	const componentClass = [
 		display ? typography[display] : typography.link,
-		underline === false && s.noUnderline,
+		!underline && s.noUnderline,
+		hover && s.hover,
 	];
 
 	const blankAttributes = blank && {
