@@ -27,7 +27,7 @@ export const Link = forwardRef<LinkElement, LinkProps>(({
 	// *----- create class from props -----
 	const componentClass = [
 		display ? typography[display] : typography.link,
-		!underline && s.noUnderline,
+		underline === false && s.noUnderline,
 		hover && s.hover,
 	];
 
