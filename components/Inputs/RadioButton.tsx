@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import type { FieldErrors, FieldValues, TFieldValues } from 'react-hook-form';
@@ -9,18 +9,20 @@ import { Typography } from '../Typography';
 
 import typography from '../Typography/Typography.module.scss';
 import cs from './commonStyle.module.scss';
+import s from './RadioButton.module.scss';
 
-export type EmailInputElement = HTMLInputElement;
+export type RadioButtonElement = HTMLInputElement;
 
-export interface EmailInputProps extends ReactHTMLElementAttributes<EmailInputElement> {
+export interface RadioButtonProps extends ReactHTMLElementAttributes<RadioButtonElement> {
 	register?: FieldValues;
 	errors?: FieldErrors<TFieldValues>;
+	labels: (string | number)[];
 }
 
-export const EmailInput = forwardRef<EmailInputElement, EmailInputProps>(({
+export const RadioButton = forwardRef<RadioButtonElement, RadioButtonProps>(({
 	register,
 	errors,
-	placeholder,
+	labels,
 	children,
 	...rest
 }, ref) => {
@@ -30,16 +32,21 @@ export const EmailInput = forwardRef<EmailInputElement, EmailInputProps>(({
 		<div className={cs.container}>
 			<Typography component="h5">{children}</Typography>
 			<div className={cs.inputBlockContainer}>
-				<label>
-					<input
-						type="email"
-						className={asm.join(cs.input, typography.input)}
-						placeholder={placeholder}
-						ref={ref}
-						{...register}
-						{...rest}
-					/>
-				</label>
+				<div className={s.elementsContainer}>
+					{labels.map((value) => (
+						<label key={value} className={s.element}>
+							<input
+								type="radio"
+								className={asm.join(s.input, typography.input)}
+								value={value.toString()}
+								ref={ref}
+								{...register}
+								{...rest}
+							/>
+							<Typography component="p1">{value}</Typography>
+						</label>
+					))}
+				</div>
 				{register && (
 					<Typography component="p2" className={asm.join(cs.error)}>
 						{typeof errorMessage === 'string' && errorMessage}
@@ -50,4 +57,4 @@ export const EmailInput = forwardRef<EmailInputElement, EmailInputProps>(({
 	);
 });
 
-EmailInput.displayName = 'EmailInput';
+RadioButton.displayName = 'RadioButton';

@@ -1,6 +1,8 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 
 import asm from 'asm-ts-scripts';
+
+import { Typography } from '../Typography';
 
 import s from './Avatar.module.scss';
 
@@ -25,11 +27,21 @@ export const Avatar = forwardRef<AvatarElement, AvatarProps>(({
 	className,
 	...rest
 }, ref) => {
+	const [imgUrl, setImgUrl] = useState('');
+
+	useEffect(() => {
+		if (src) setImgUrl(src);
+	}, [src]);
+
 	const componentClass = [
-		onClick && 'clickable',
+		onClick && s.clickable,
 	];
 
 	const sizeClass = size && s[size];
+
+	const handleImageOnError = () => {
+		setImgUrl('');
+	};
 
 	return (
 		// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
@@ -39,7 +51,7 @@ export const Avatar = forwardRef<AvatarElement, AvatarProps>(({
 			ref={ref}
 			{...rest}
 		>
-			{(!src && children) && (
+			{(!imgUrl && children) && (
 				<div
 					className={asm.join(s.charContainer, sizeClass)}
 					style={{ backgroundColor: color }}
@@ -47,16 +59,23 @@ export const Avatar = forwardRef<AvatarElement, AvatarProps>(({
 					{children}
 				</div>
 			)}
-			{src && <img className={asm.join(s.img, sizeClass)} src={src} alt={alt} />}
-			{!src && !children
+			{imgUrl && (
+				<img
+					className={asm.join(s.img, sizeClass)}
+					src={imgUrl}
+					alt={alt}
+					onError={handleImageOnError}
+				/>
+			)}
+			{!imgUrl && !children
 					&& (
 						<div
 							className={asm.join(s.charContainer, sizeClass)}
 							style={{ backgroundColor: color }}
 						>
-							<h5 className={asm.join(s.char, 'h5')}>
+							<Typography display="h5" className={s.char}>
 								{char}
-							</h5>
+							</Typography>
 						</div>
 					)}
 		</div>
@@ -64,49 +83,3 @@ export const Avatar = forwardRef<AvatarElement, AvatarProps>(({
 });
 
 Avatar.displayName = 'Avatar';
-
-// import asm from 'asm-ts-scripts';
-
-// import s from './Avatar.module.scss';
-
-// interface Props {
-// 	src?: string;
-// 	alt?: string;
-// 	char?: string;
-// 	color?: string;
-// 	size?: 'normal' | 'small';
-// 	onClick?: () => void;
-// 	icon?: string;
-// }
-
-// export function Avatar({
-// 	src, alt, char, color, size = 'normal', onClick, icon,
-// }: Props) {
-// 	const smallClass = size === 'small' && s.small;
-
-// 	return (
-// 		// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-// 		<div className={onClick ? 'clickable' : ''} onClick={onClick}>
-// 			{(!src && icon) && (
-// 				<div
-// 					className={asm.join(s.charContainer, smallClass)}
-// 					style={{ backgroundColor: color }}
-// 				>
-// 					<span className={asm.join('icon', icon)} />
-// 				</div>
-// 			)}
-// 			{src && <img className={asm.join(s.img, smallClass)} src={src} alt={alt} />}
-// 			{!src && !icon
-// 					&& (
-// 						<div
-// 							className={asm.join(s.charContainer, smallClass)}
-// 							style={{ backgroundColor: color }}
-// 						>
-// 							<h5 className={asm.join(s.char, 'h5')}>
-// 								{char}
-// 							</h5>
-// 						</div>
-// 					)}
-// 		</div>
-// 	);
-// }

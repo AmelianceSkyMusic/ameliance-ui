@@ -5,3 +5,4 @@ export * from './FileImgUpload';
 export * from './FileUpload';
 export * from './PasswordInput';
 export * from './TextInput';
+export * from './RadioButton';

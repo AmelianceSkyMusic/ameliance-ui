@@ -1,7 +1,7 @@
-import { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { FieldError, FieldValues } from 'react-hook-form';
+import type { FieldErrors, FieldValues, TFieldValues } from 'react-hook-form';
 
 import asm from 'asm-ts-scripts';
 
@@ -17,10 +17,11 @@ export type FileImgUploadElement = HTMLInputElement;
 
 export interface FileImgUploadProps extends ReactHTMLElementAttributes<FileImgUploadElement> {
 	register?: FieldValues;
-	errors?: Record<string, FieldError> | undefined;
-	watch: (name: string) => FieldValues;
+	errors?: FieldErrors<TFieldValues>;
+	watch?: (name: string) => FieldValues;
 	accept?: string;
 	label?: string;
+	defaultImg?: string;
 }
 
 export const FileImgUpload = forwardRef<FileImgUploadElement, FileImgUploadProps>(({
@@ -29,19 +30,35 @@ export const FileImgUpload = forwardRef<FileImgUploadElement, FileImgUploadProps
 	watch,
 	accept,
 	label,
+	defaultImg = '',
 	children,
 	className,
 	...rest
 }, ref) => {
-	const [image, setImage] = useState<string>();
-	const files = watch(register ? register.name : null);
-	useEffect(() => {
-		let fileImage = '';
-		if (files && files.length > 0) {
-			fileImage = URL.createObjectURL(files[0]);
+	const [image, setImage] = useState<string>(defaultImg);
+	const files = watch ? watch(register ? register.name : null) : null;
+
+	const setFileImages = (filesList: FileList | null) => {
+		if (filesList && filesList.length > 0) {
+			if (typeof filesList === 'string') {
+				setImage(filesList);
+			} else {
+				const fileImage = URL.createObjectURL(filesList[0]);
+				setImage(fileImage);
+			}
 		}
-		setImage(fileImage);
+	};
+
+	useEffect(() => {
+		if (watch && files) setFileImages(files as FileList);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [files]);
+
+	const handleInputOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (!watch && defaultImg) setFileImages(event.target.files);
+	};
+
+	const errorMessage = errors ? errors[register?.name]?.message : '';
 
 	return (
 		<div className={asm.join(s.FileImgUpload, cs.container)}>
@@ -53,6 +70,7 @@ export const FileImgUpload = forwardRef<FileImgUploadElement, FileImgUploadProps
 						accept={accept || ''}
 						className={asm.join(s.input, className)}
 						ref={ref}
+						onChange={handleInputOnChange}
 						{...register}
 						{...rest}
 					/>
@@ -62,7 +80,7 @@ export const FileImgUpload = forwardRef<FileImgUploadElement, FileImgUploadProps
 				</label>
 				{register && (
 					<Typography component="p2" className={asm.join(cs.error)}>
-						{(errors && errors[register.name] && errors[register.name].message) || ''}
+						{typeof errorMessage === 'string' && errorMessage}
 					</Typography>
 				)}
 			</div>

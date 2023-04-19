@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { FieldError, FieldValues } from 'react-hook-form';
+import type { FieldErrors, FieldValues, TFieldValues } from 'react-hook-form';
 
 import asm from 'asm-ts-scripts';
 

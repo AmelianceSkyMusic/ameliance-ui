@@ -1,7 +1,7 @@
 import { forwardRef, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { FieldError, FieldValues } from 'react-hook-form';
+import type { FieldErrors, FieldValues, TFieldValues } from 'react-hook-form';
 
 import asm from 'asm-ts-scripts';
 
@@ -18,7 +18,7 @@ export type PasswordInputElement = HTMLInputElement;
 
 export interface PasswordInputProps extends ReactHTMLElementAttributes<PasswordInputElement> {
 	register?: FieldValues;
-	errors?: Record<string, FieldError> | undefined;
+	errors?: FieldErrors<TFieldValues>;
 }
 
 export const PasswordInput = forwardRef<PasswordInputElement, PasswordInputProps>(({
@@ -36,6 +36,8 @@ export const PasswordInput = forwardRef<PasswordInputElement, PasswordInputProps
 	};
 
 	const inputType = isShowPassword ? 'text' : 'password';
+
+	const errorMessage = errors ? errors[register?.name]?.message : '';
 
 	return (
 		<div className={cs.container}>
@@ -58,7 +60,7 @@ export const PasswordInput = forwardRef<PasswordInputElement, PasswordInputProps
 				</label>
 				{register && (
 					<Typography component="p2" className={asm.join(cs.error)}>
-						{(errors && errors[register?.name] && errors[register?.name].message) || ''}
+						{typeof errorMessage === 'string' && errorMessage}
 					</Typography>
 				)}
 			</div>

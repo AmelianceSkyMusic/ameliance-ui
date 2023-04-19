@@ -1,7 +1,7 @@
 import { forwardRef, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import type { FieldError, FieldValues } from 'react-hook-form';
+import type { FieldErrors, FieldValues, TFieldValues } from 'react-hook-form';
 
 import asm from 'asm-ts-scripts';
 
@@ -18,7 +18,7 @@ export type SearchInputElement = HTMLInputElement;
 
 export interface SearchInputProps extends ReactHTMLElementAttributes<SearchInputElement> {
 	register?: FieldValues;
-	errors?: Record<string, FieldError> | undefined;
+	errors?: FieldErrors<TFieldValues>;
 	onApply?: (value: string) => void;
 	onChangeValue?: (value: string) => void;
 	autoClear?: boolean;
@@ -60,6 +60,8 @@ export const SearchInput = forwardRef<SearchInputElement, SearchInputProps>(({
 		}
 	};
 
+	const errorMessage = errors ? errors[register?.name]?.message : '';
+
 	return (
 		<div className={cs.container}>
 			<Typography component="h5">{children}</Typography>
@@ -89,7 +91,7 @@ export const SearchInput = forwardRef<SearchInputElement, SearchInputProps>(({
 				</label>
 				{register && (
 					<Typography component="p2" className={asm.join(cs.error)}>
-						{(errors && errors[register?.name] && errors[register?.name].message) || ''}
+						{typeof errorMessage === 'string' && errorMessage}
 					</Typography>
 				)}
 			</div>
