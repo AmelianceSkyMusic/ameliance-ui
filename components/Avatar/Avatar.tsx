@@ -59,7 +59,7 @@ export const Avatar = forwardRef<AvatarElement, AvatarProps>(({
 					{children}
 				</div>
 			)}
-			{imgUrl && (
+			{!!imgUrl && (
 				<img
 					className={asm.join(s.img, sizeClass)}
 					src={imgUrl}

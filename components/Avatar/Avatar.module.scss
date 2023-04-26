@@ -9,6 +9,10 @@
 		width: 36px;
 		height: 36px;
 	}
+	&.extra {
+		width: 256px;
+		height: 256px;
+	}
 }
 
 .charContainer {
@@ -26,6 +30,10 @@
 	&.small {
 		width: 36px;
 		height: 36px;
+	}
+	&.extra {
+		width: 256px;
+		height: 256px;
 	}
 }
 
