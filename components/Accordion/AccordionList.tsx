@@ -9,7 +9,7 @@ import s from './AccordionList.module.scss';
 export type AccordionListElement = HTMLUListElement;
 
 export interface AccordionListProps extends ReactHTMLElementAttributes<AccordionListElement> {
-	content: {
+	contentList: {
 		heading: string | string[];
 		text: string | string[];
 	}[];
@@ -28,7 +28,7 @@ type ContentWithId = {
 }[];
 
 export const AccordionList = forwardRef<AccordionListElement, AccordionListProps>(({
-	content,
+	contentList,
 	headingComponent,
 	textComponent,
 	autoclose,
@@ -41,13 +41,13 @@ export const AccordionList = forwardRef<AccordionListElement, AccordionListProps
 	const [contentWithId, setContentWithId] = useState<ContentWithId>();
 
 	useEffect(() => {
-		setContentWithId(content.map((item, i) => ({
+		setContentWithId(contentList.map((item, i) => ({
 			...item,
 			id: i,
 			isOpen: false,
 		})));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [content]);
+	}, [contentList]);
 
 	const handleToggle = (id: number) => {
 		if (autoclose && clicked === id) {
