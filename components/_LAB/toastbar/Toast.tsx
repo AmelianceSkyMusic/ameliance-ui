@@ -1,4 +1,5 @@
-import React, {
+import type React from 'react';
+import {
 	forwardRef, useEffect, useRef,
 } from 'react';
 
