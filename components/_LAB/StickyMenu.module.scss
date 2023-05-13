@@ -1,0 +1,70 @@
+@use "../../styles/globals/" as *;
+
+.icon {
+	transition: transform 0.2s ease-in-out;
+}
+
+.menu {
+	position: absolute;
+	right: 0;
+	bottom: 0px;
+	z-index: -1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end; // TODO: add as option to component. Change width item
+	gap: 8px;
+}
+
+.menuItem {
+	position: relative;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	min-height: 42px;
+	padding: 6px 16px;
+	white-space: nowrap;
+	user-select: none;
+	background-color: var(--color--b1-2);
+	border-radius: 1000px;
+	opacity: 0;
+	transition: transform 0.2s ease-in-out, opacity 0.15s ease-in-out 0.05s;
+	--sticky-button-offset: 0;
+	transform: translateY(var(--sticky-button-offset));
+
+	@include clickable;
+
+	@include hover {
+		background-color: var(--color--b1-1);
+	}
+
+	@include active {
+		background-color: var(--color--b1-2);
+	}
+
+	@include disabled;
+
+	pointer-events: none;
+}
+
+.menuTitle {
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+}
+
+.open {
+	.icon {
+		transform: rotate(135deg);
+	}
+	.menuItem {
+		opacity: 100%;
+		transition: transform 0.2s ease-in-out, opacity 0.15s ease-in-out;
+		transform: translateY(calc(-100% - 16px));
+		@extend %box-shadow--default;
+	}
+	.menuTitle {
+		transition: opacity 0.1s ease-in-out 0.1s;
+		opacity: 100%;
+		pointer-events: all;
+	}
+}

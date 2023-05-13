@@ -1,43 +1,64 @@
 @use "../../styles/globals/" as *;
 
 .StickyButton {
-	--sticky-button-offset: 24px;
+	--sticky-button-offset: var(--gap);
 	z-index: 10;
 	position: fixed;
 	right: var(--gap);
-	bottom: calc(var(--gap) * -2);
+	bottom: var(--sticky-button-offset);
 	background-color: var(--color--b1-2);
 	border-radius: 50%;
 	@extend %box-shadow--default;
 	&.hide {
-		bottom: -64px;
-		animation-name: sticky-button-hide;
-		animation-duration: 0.4s;
-		animation-fill-mode: forwards;
+		&.slideIn {
+			animation: slide-in-hide-animation ease-in-out 0.4s forwards;
+		}
+		&.popup {
+			animation: popup-hide-animation ease-in-out 0.2s forwards;
+		}
 	}
 	&.show {
-		animation-name: sticky-button-show;
-		animation-duration: 0.4s;
-		animation-fill-mode: forwards;
-	}
-
-	// transform: translateY();
-	// translate: ;
-}
-
-// .theme-button {
-// 	padding: 16px;
-// 	border-radius: 50%;
-// }
-
-@keyframes sticky-button-show {
-	100% {
-		bottom: calc(var(--sticky-button-offset));
+		&.slideIn {
+			animation: slide-in-show-animation ease-in-out 0.4s forwards;
+		}
+		&.popup {
+			animation: popup-show-animation ease-in-out 0.2s forwards;
+		}
 	}
 }
 
-@keyframes sticky-button-hide {
+@keyframes slide-in-hide-animation {
+	0% {
+		transform: translateY(0);
+	}
 	100% {
-		bottom: -64px * 3;
+		transform: translateY(calc(var(--sticky-button-offset) * 2));
+	}
+}
+
+@keyframes slide-in-show-animation {
+	0% {
+		transform: translateY(calc(var(--sticky-button-offset) * 2));
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes popup-hide-animation {
+	0% {
+		transform: scale(100%);
+	}
+	100% {
+		transform: scale(0%);
+	}
+}
+
+@keyframes popup-show-animation {
+	0% {
+		transform: scale(0%);
+	}
+	100% {
+		transform: scale(100%);
 	}
 }
