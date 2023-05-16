@@ -36,7 +36,9 @@ export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>((
 	const stickyButtonRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		if (stickyButtonRef && offset) stickyButtonRef.current?.style.setProperty('--sticky-button-offset', `${offset}px`);
+		if (stickyButtonRef) {
+			stickyButtonRef.current?.style.setProperty('--sticky-button-offset', offset ? `${offset}px` : 'var(--gap)');
+		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [stickyButtonRef, offset]);
 

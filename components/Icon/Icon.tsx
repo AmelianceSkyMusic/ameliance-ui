@@ -14,8 +14,8 @@ export interface IconProps extends ReactHTMLElementAttributes<IconElement> {
 
 export const Icon = forwardRef<IconElement, IconProps>(({
 	size = 'default',
-	width = 24,
-	height = 24,
+	width,
+	height,
 	onClick,
 	children,
 	className,
@@ -27,7 +27,7 @@ export const Icon = forwardRef<IconElement, IconProps>(({
 		size && s[size],
 	];
 
-	const customSizeStyle = size === 'custom' ? { width, height } : {};
+	const customSizeStyle = size === 'custom' && width && height ? { width, height } : {};
 
 	return (
 		// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
