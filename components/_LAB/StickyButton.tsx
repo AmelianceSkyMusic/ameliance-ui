@@ -1,13 +1,11 @@
 import {
-	forwardRef, useEffect, useRef, useState,
+	forwardRef, useEffect, useState,
 } from 'react';
 
 import asm from 'asm-ts-scripts';
 
 import { useScroll } from '~hooks/useScroll';
 import { useWindowSize } from '~hooks/useWindowSize';
-
-import { mergeRefs } from '~/ameliance-ui/helpers/mergeRefs';
 
 import { Portal } from '../Portal';
 
@@ -32,15 +30,6 @@ export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>((
 	...rest
 }, ref) => {
 	const [animationClass, setAnimationClass] = useState(s.hide);
-
-	const stickyButtonRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (stickyButtonRef) {
-			stickyButtonRef.current?.style.setProperty('--sticky-button-offset', offset ? `${offset}px` : 'var(--gap)');
-		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [stickyButtonRef, offset]);
 
 	const { windowHeight } = useWindowSize();
 
@@ -68,11 +57,32 @@ export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>((
 		animation === 'popup' && s.popup,
 	];
 
+	const [isChangeOffset, setIsChangeOffset] = useState(false);
+
+	const moveOffsetClass = isChangeOffset && s.moveOffset;
+
+	useEffect(() => {
+		if (offset) {
+			setIsChangeOffset(true);
+		} else {
+			setIsChangeOffset(false);
+		}
+	}, [offset]);
+
 	return (
 		<Portal>
 			<div
-				className={asm.join(s.StickyButton, className, componentClass)}
-				ref={mergeRefs([ref, stickyButtonRef])}
+				className={asm.join(
+					s.StickyButton,
+					className,
+					componentClass,
+					moveOffsetClass,
+				)}
+				ref={ref}
+				style={{
+					'--sticky-button-offset': offset ? `calc(${offset}px * -1)` : 'var(--sticky-button-offset-init)',
+					'--sticky-button-offset-prev:': 'var(--sticky-button-offset)',
+				} as React.CSSProperties}
 				{...rest}
 			>
 				{children}

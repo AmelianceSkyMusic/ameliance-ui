@@ -1,22 +1,20 @@
 @use "../../styles/globals/" as *;
 
 .StickyButton {
-	--sticky-button-offset: var(--gap);
-	z-index: 10;
+	--sticky-button-offset-init: calc(-100% + var(--gap));
+	--sticky-button-offset-prev: var(--sticky-button-offset-init);
+	--sticky-button-offset: 1000%;
 	position: fixed;
 	right: var(--gap);
-	bottom: var(--sticky-button-offset);
+	bottom: 0;
+	z-index: 10;
 	background-color: var(--color--b1-2);
 	border-radius: 50%;
 	@extend %box-shadow--default;
-	&.hide {
-		&.slideIn {
-			animation: slide-in-hide-animation ease-in-out 0.4s forwards;
-		}
-		&.popup {
-			animation: popup-hide-animation ease-in-out 0.2s forwards;
-		}
-	}
+	transform: translateY(var(--sticky-button-offset-init));
+}
+
+.StickyButton {
 	&.show {
 		&.slideIn {
 			animation: slide-in-show-animation ease-in-out 0.4s forwards;
@@ -25,14 +23,14 @@
 			animation: popup-show-animation ease-in-out 0.2s forwards;
 		}
 	}
-}
 
-@keyframes slide-in-hide-animation {
-	0% {
-		transform: translateY(0);
-	}
-	100% {
-		transform: translateY(calc(var(--sticky-button-offset) * 2));
+	&.hide {
+		&.slideIn {
+			animation: slide-in-hide-animation ease-in-out 0.4s forwards;
+		}
+		&.popup {
+			animation: popup-hide-animation ease-in-out 0.2s forwards;
+		}
 	}
 }
 
@@ -45,12 +43,12 @@
 	}
 }
 
-@keyframes popup-hide-animation {
+@keyframes slide-in-hide-animation {
 	0% {
-		transform: scale(100%);
+		transform: translateY(0);
 	}
 	100% {
-		transform: scale(0%);
+		transform: translateY(calc(var(--sticky-button-offset) * 2));
 	}
 }
 
@@ -60,5 +58,27 @@
 	}
 	100% {
 		transform: scale(100%);
+	}
+}
+
+@keyframes popup-hide-animation {
+	0% {
+		transform: scale(100%);
+	}
+	100% {
+		transform: scale(0%);
+	}
+}
+
+.StickyButton.moveOffset {
+	animation: move-offset-animation 0.4s forwards;
+}
+
+@keyframes move-offset-animation {
+	0% {
+		transform: translateY(var(--sticky-button-offset-prev));
+	}
+	100% {
+		transform: translateY(var(--sticky-button-offset));
 	}
 }
