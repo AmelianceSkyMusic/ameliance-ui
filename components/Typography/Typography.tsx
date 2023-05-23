@@ -8,7 +8,7 @@ import s from './Typography.module.scss';
 
 export type TypographyElement = HTMLHeadingElement | HTMLParagraphElement;
 
-export interface TypographyProps extends ReactHTMLElementAttributes<TypographyElement> {
+export interface TypographyProps extends Omit<ReactHTMLElementAttributes<TypographyElement>, 'ref'> {
 	component?: TypographyVariants;
 	display?: TypographyVariants;
 }

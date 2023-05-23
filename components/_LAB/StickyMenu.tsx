@@ -19,7 +19,7 @@ export interface StickyMenuProps extends StickyButtonProps {
 	animation?: 'popup' | 'slide-in';
 	inverseDirection?: boolean;
 	hideOnScreensCount?: number;
-	offset?: number;
+	offset?: number | null;
 	menuItems: {
 		title: string;
 		action: () => void;

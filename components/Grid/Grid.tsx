@@ -1,13 +1,14 @@
-import type { ComponentProps, ElementType } from 'react';
+import type { ElementType } from 'react';
 import { forwardRef } from 'react';
 
 import asm from 'asm-ts-scripts';
 
+import type { ComponentElementType, ComponentProps } from '../_LAB/Component';
 import { Component } from '../_LAB/Component';
 
-export type GridElement = ComponentProps<ElementType>;
+export type GridElement = ComponentElementType;
 
-export interface GridProps extends ReactHTMLElementAttributes<GridElement> {
+export interface GridProps extends ComponentProps {
 	component?: ElementType;
 	container?: boolean;
 	row?: boolean;
@@ -26,13 +27,16 @@ export const Grid = forwardRef<GridElement, GridProps>(({
 		row && 'row',
 	];
 
-	const attributes	= {
-		className: asm.join(className, componentClass),
-		ref,
-		...rest,
-	};
-
-	return (<Component as={component} {...attributes}>{children}</Component>);
+	return (
+		<Component
+			as={component}
+			className={asm.join(className, componentClass)}
+			ref={ref}
+			{...rest}
+		>
+			{children}
+		</Component>
+	);
 });
 
 Grid.displayName = 'Grid';

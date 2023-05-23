@@ -9,7 +9,7 @@ import type { Grid } from './types/Grid';
 
 export type BlockElement = ComponentProps<ElementType>;
 
-export interface BlockProps extends ReactHTMLElementAttributes<BlockElement> {
+export interface BlockProps extends Omit<ReactHTMLElementAttributes<BlockElement>, 'ref'> {
 	component?: ElementType;
 	grid?: Grid;
 }

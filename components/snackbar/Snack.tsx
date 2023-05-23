@@ -8,31 +8,31 @@ import asm from 'asm-ts-scripts';
 import { mergeRefs } from '~/ameliance-ui/helpers/mergeRefs';
 import { useSwipe } from '~/ameliance-ui/hooks/useSwipe';
 
-import type { IconElement } from '../../Icon';
-import { Icon } from '../../Icon';
-import { AlertCircleIcon } from '../../icons/AlertCircleIcon';
-import { AlertTriangleIcon } from '../../icons/AlertTriangleIcon';
-import { CheckCircleIcon } from '../../icons/CheckCircleIcon';
-import { InfoIcon } from '../../icons/InfoIcon';
-import { XCircleIcon } from '../../icons/XCircleIcon';
-import { XIcon } from '../../icons/XIcon';
-import { LoaderCounter } from '../../Loader';
-import { Typography } from '../../Typography';
-import { useToast } from './toastbar';
+import type { IconElement } from '../Icon';
+import { Icon } from '../Icon';
+import { AlertCircleIcon } from '../icons/AlertCircleIcon';
+import { AlertTriangleIcon } from '../icons/AlertTriangleIcon';
+import { CheckCircleIcon } from '../icons/CheckCircleIcon';
+import { InfoIcon } from '../icons/InfoIcon';
+import { XCircleIcon } from '../icons/XCircleIcon';
+import { XIcon } from '../icons/XIcon';
+import { LoaderCounter } from '../Loader';
+import { Typography } from '../Typography';
+import { useSnack } from './snackbar';
 
-import s from './Toast.module.scss';
+import s from './Snack.module.scss';
 
-type ToastElement = HTMLDivElement;
+type SnackElement = HTMLDivElement;
 
-type ToastPosition = 'bottom-center' | 'top-center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+type SnackPosition = 'bottom-center' | 'top-center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-export interface ToastProps extends ReactHTMLElementAttributes<ToastElement> {
+export interface SnackProps extends ReactHTMLElementAttributes<SnackElement> {
 	id: string;
 	message: string | string[];
 	title?: string;
 	type?: NotificationTypes;
 	size?: 'flex' | 'medium' | 'large';
-	position?: ToastPosition;
+	position?: SnackPosition;
 	oneLine?: boolean;
 	onCloseButtonClick?: (event: React.MouseEvent<IconElement>) => void;
 	duration?: number;
@@ -47,7 +47,7 @@ function getIconByType(iconType?: NotificationTypes) {
 	return <AlertCircleIcon />;
 }
 
-export const Toast = forwardRef<ToastElement, ToastProps>(({
+export const Snack = forwardRef<SnackElement, SnackProps>(({
 	id,
 	message,
 	title = '',
@@ -61,8 +61,8 @@ export const Toast = forwardRef<ToastElement, ToastProps>(({
 	className,
 	...rest
 }, ref) => {
-	const toastRef = useRef<HTMLDivElement>(null);
-	const { remove } = useToast();
+	const snackRef = useRef<HTMLDivElement>(null);
+	const { remove } = useSnack();
 
 	const componentClass = [
 		size && s[size],
@@ -72,17 +72,17 @@ export const Toast = forwardRef<ToastElement, ToastProps>(({
 
 	const contentViewClass = oneLine && s.oneLine;
 
-	const toastTitle = title
+	const snackTitle = title
 	|| ((type === 'alert' && 'Повідомлення!')
 	|| (type === 'info' && 'Інформація!')
 		|| (type === 'success' && 'Успіх!')
 		|| (type === 'error' && 'Помилка!')
 		|| (type === 'warn' && 'Попередження!'));
 
-	const closeToast = () => {
-		toastRef.current?.classList.add(s.hideToastAnimation);
-		toastRef.current?.addEventListener('animationend', (event) => {
-			if (event.target === toastRef.current) {
+	const closeSnack = () => {
+		snackRef.current?.classList.add(s.hideSnackAnimation);
+		snackRef.current?.addEventListener('animationend', (event) => {
+			if (event.target === snackRef.current) {
 				event.stopPropagation();
 				remove(id);
 			}
@@ -94,7 +94,7 @@ export const Toast = forwardRef<ToastElement, ToastProps>(({
 	useEffect(() => {
 		if (duration > 0) {
 			dismissRef.current = setTimeout(() => {
-				closeToast();
+				closeSnack();
 			}, duration);
 		}
 		return () => {
@@ -121,22 +121,22 @@ export const Toast = forwardRef<ToastElement, ToastProps>(({
 	// // eslint-disable-next-line react-hooks/exhaustive-deps
 	// }, []);
 
-	const { swipeDirection } = useSwipe({ ref: toastRef, targetDirection: 'right' });
+	const { swipeDirection } = useSwipe({ ref: snackRef, targetDirection: 'right' });
 
 	useEffect(() => {
-		if (swipeDirection === 'right') closeToast();
+		if (swipeDirection === 'right') closeSnack();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [swipeDirection]);
 
 	const handleCloseButtonClick = (event: React.MouseEvent<IconElement>) => {
 		if (onCloseButtonClick) onCloseButtonClick(event);
-		closeToast();
+		closeSnack();
 	};
 
 	return (
 		<div
-			className={asm.join(s.Toast, className, componentClass)}
-			ref={mergeRefs([ref, toastRef])}
+			className={asm.join(s.Snack, className, componentClass)}
+			ref={mergeRefs([ref, snackRef])}
 			{...rest}
 		>
 			<div className={s.content}>
@@ -145,7 +145,7 @@ export const Toast = forwardRef<ToastElement, ToastProps>(({
 				</Icon>
 				<div className={asm.join(s.textContent, contentViewClass)}>
 					<Typography component="h6" className={s.title}>
-						{toastTitle}
+						{snackTitle}
 					</Typography>
 					{typeof message === 'string'
 						? (
@@ -167,4 +167,4 @@ export const Toast = forwardRef<ToastElement, ToastProps>(({
 	);
 });
 
-Toast.displayName = 'Toast';
+Snack.displayName = 'Snack';

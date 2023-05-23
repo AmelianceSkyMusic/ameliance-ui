@@ -1,11 +1,13 @@
 import {
-	forwardRef, useEffect, useState,
+	forwardRef, useEffect, useRef, useState,
 } from 'react';
 
 import asm from 'asm-ts-scripts';
 
 import { useScroll } from '~hooks/useScroll';
 import { useWindowSize } from '~hooks/useWindowSize';
+
+import { mergeRefs } from '~/ameliance-ui/helpers/mergeRefs';
 
 import { Portal } from '../Portal';
 
@@ -17,7 +19,7 @@ export interface StickyButtonProps extends ReactHTMLElementAttributes<StickyButt
 	animation?: 'popup' | 'slide-in';
 	inverseDirection?: boolean;
 	hideOnScreensCount?: number;
-	offset?: number;
+	offset?: number | null;
 }
 
 export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>(({
@@ -27,6 +29,7 @@ export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>((
 	offset,
 	children,
 	className,
+	style,
 	...rest
 }, ref) => {
 	const [animationClass, setAnimationClass] = useState(s.hide);
@@ -57,17 +60,18 @@ export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>((
 		animation === 'popup' && s.popup,
 	];
 
-	const [isChangeOffset, setIsChangeOffset] = useState(false);
+	const [offsetVar, setOffsetVar] = useState<string>();
 
-	const moveOffsetClass = isChangeOffset && s.moveOffset;
-
+	const stickyButtonRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
-		if (offset) {
-			setIsChangeOffset(true);
+		if (stickyButtonRef && typeof offset === 'number') {
+			// stickyButtonRef.current?.style.setProperty('--sticky-button-offset', `calc(${offset}px * -1)`);
+			setOffsetVar(`calc(${offset}px * -1)`);
 		} else {
-			setIsChangeOffset(false);
+			setOffsetVar('var(--sticky-button-offset-init)');
 		}
-	}, [offset]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [stickyButtonRef, offset]);
 
 	return (
 		<Portal>
@@ -76,16 +80,17 @@ export const StickyButton = forwardRef<StickyButtonElement, StickyButtonProps>((
 					s.StickyButton,
 					className,
 					componentClass,
-					moveOffsetClass,
 				)}
-				ref={ref}
+				ref={mergeRefs([ref, stickyButtonRef])}
 				style={{
-					'--sticky-button-offset': offset ? `calc(${offset}px * -1)` : 'var(--sticky-button-offset-init)',
-					'--sticky-button-offset-prev:': 'var(--sticky-button-offset)',
+					...style,
+					'--sticky-button-offset': offsetVar,
 				} as React.CSSProperties}
 				{...rest}
 			>
-				{children}
+				<div className={s.children}>
+					{children}
+				</div>
 			</div>
 		</Portal>
 	);

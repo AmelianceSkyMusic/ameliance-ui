@@ -12,7 +12,12 @@ export function Portal({ children, className = 'root-portal', elementType = 'div
 	const { current } = container;
 
 	useEffect(() => {
-		current.classList.add(className);
+		const classNameArray = className.split(' ');
+		if (classNameArray.length > 1) {
+			classNameArray.forEach((classItem) => current.classList.add(classItem));
+		} else {
+			current.classList.add(classNameArray.join(''));
+		}
 		document.body.appendChild(container.current);
 		return () => {
 			document.body.removeChild(current);

@@ -1,6 +1,6 @@
-@use "../../../styles/globals/" as *;
+@use "../../styles/globals/" as *;
 
-.Toast {
+.Snack {
 	display: flex;
 	justify-content: space-between;
 	gap: 16px;
@@ -122,7 +122,7 @@
 	}
 }
 
-.hideToastAnimation {
+.hideSnackAnimation {
 	animation: 0.3s ease-out forwards animation-hide;
 }
 
