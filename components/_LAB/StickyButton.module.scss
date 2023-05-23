@@ -90,7 +90,7 @@
 
 @keyframes display-none-show-animation {
 	0% {
-		transform: translateY(calc(var(--sticky-button-offset) * 2));
+		transform: translateY(100%);
 		opacity: 0;
 	}
 	1% {
@@ -111,7 +111,7 @@
 		opacity: 0;
 	}
 	100% {
-		transform: translateY(calc(var(--sticky-button-offset) * 2));
+		transform: translateY(100%);
 		opacity: 0;
 	}
 }
