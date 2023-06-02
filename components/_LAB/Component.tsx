@@ -1,13 +1,13 @@
 import type { ElementType, HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
-export type ComponentElementType = HTMLOrSVGElement;
+export type ComponentElement = HTMLOrSVGElement;
 
-export interface ComponentProps extends HTMLAttributes<ComponentElementType> {
+export interface ComponentProps extends HTMLAttributes<ComponentElement> {
 	as?: ElementType;
 }
 
-export const Component = forwardRef<ComponentElementType, ComponentProps>(({
+export const Component = forwardRef<ComponentElement, ComponentProps>(({
 	as: Tag = 'div',
 	children,
 	className,

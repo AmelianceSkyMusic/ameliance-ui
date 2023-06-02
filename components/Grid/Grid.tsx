@@ -3,10 +3,10 @@ import { forwardRef } from 'react';
 
 import asm from 'asm-ts-scripts';
 
-import type { ComponentElementType, ComponentProps } from '../_LAB/Component';
+import type { ComponentElement, ComponentProps } from '../_LAB/Component';
 import { Component } from '../_LAB/Component';
 
-export type GridElement = ComponentElementType;
+export type GridElement = ComponentElement;
 
 export interface GridProps extends ComponentProps {
 	component?: ElementType;

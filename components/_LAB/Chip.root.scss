@@ -1,0 +1,76 @@
+html[data-theme="light"] {
+	--a--chip--color-selected: var(--a--color--gray-25);
+	--a--chip--color-selected-hover: var(--a--color--gray-27);
+	--a--chip--background-selected: var(--a--color--gray-15);
+	--a--chip--background-selected-hover: var(--a--color--gray-13);
+
+	--a--chip--color-hover: var(--a--color--gray-11);
+	--a--chip--border-hover: var(--a--color--gray-17);
+}
+
+:root {
+	--a--chip--color: var(--a--color--gray-17);
+	--a--chip--color-hover: var(--a--color--gray-15);
+	--a--chip--background: none;
+	--a--chip--background-hover: none;
+
+	--a--chip--color-selected: var(--a--color--gray-13);
+	--a--chip--color-selected-hover: var(--a--color--gray-11);
+	--a--chip--background-selected: var(--a--color--gray-22);
+	--a--chip--background-selected-hover: var(--a--color--gray-21);
+
+	--a--chip--border: var(--a--color--gray-22);
+	--a--chip--border-hover: var(--a--color--gray-19);
+	--a--chip--border-selected: var(--a--chip--background-selected);
+	--a--chip--border-selected-hover: var(--a--chip--background-selected-hover);
+
+	// --a--chip--text--color: var(--color--f1-1);
+	// --a--chip--text--color-hover: var(--color--f1-2);
+	// --a--chip--text--color-active: var(--color--f1-0);
+
+	--a--chip--border-size: 1px;
+
+	--a--chip--side-padding: 16px;
+
+	--a--chip--font-size-tiny: 12px;
+	--a--chip--font-size-small: 14px;
+	--a--chip--font-size-default: 18px;
+	--a--chip--font-size-medium: 24px;
+	--a--chip--font-size-large: 32px;
+	--a--chip--font-size-extra: 36px;
+
+	--a--chip--height-tiny: 24px;
+	--a--chip--height-small: 32px;
+	--a--chip--height-default: 42px;
+	--a--chip--height-medium: 48px;
+	--a--chip--height-large: 56px;
+	--a--chip--height-extra: 80px;
+
+	--a--chip--width-tiny: var(--a--chip--height-tiny);
+	--a--chip--width-small: var(--a--chip--height-small);
+	--a--chip--width-default: var(--a--chip--height-default);
+	--a--chip--width-medium: var(--a--chip--height-medium);
+	--a--chip--width-large: var(--a--chip--height-large);
+	--a--chip--width-extra: var(--a--chip--height-extra);
+
+	--a--chip--label-height-tiny: 14px;
+	--a--chip--label-height-small: 18px;
+	--a--chip--label-height-default: 24px;
+	--a--chip--label-height-medium: 36px;
+	--a--chip--label-height-large: 42px;
+	--a--chip--label-height-extra: 64px;
+}
+
+// // Todo: add primary / secondary
+// html[data-theme="light"] {
+// 	--a--chip--background: var(--a--color--gray-27);
+// 	--a--chip--background-hover: var(--a--color--gray-28);
+// }
+
+// :root {
+// 	--a--chip--background: var(--a--color--gray-26);
+// 	--a--chip--background-hover: var(--a--color--gray-25);
+
+// 	--a--chip--border: none;
+// 	--a--chip--border-hover: none;
+// }

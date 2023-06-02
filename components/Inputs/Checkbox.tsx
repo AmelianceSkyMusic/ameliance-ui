@@ -42,7 +42,7 @@ export const Checkbox = forwardRef<CheckboxElement, CheckboxProps>(({
 				<label className={s.inputContainer}>
 					<input
 						type="checkbox"
-						className={asm.join(s.input, className)}
+						className={asm.join(s.input, className, 'input-checkbox')}
 						ref={ref}
 						{...register}
 						{...rest}
