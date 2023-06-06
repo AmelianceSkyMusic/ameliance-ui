@@ -77,9 +77,9 @@ html[data-theme="dark"] {
 html[data-theme="dark"] {
 	--a--color--saturation: 70%;
 
-	@mixin setColor($color, $value) {
+	@mixin setColor($colorName, $shade) {
 		@for $i from 1 through 9 {
-			--a--color--#{$color}-#{$i}: hsl(#{$value}, var(--a--color--saturation), #{100% - (10% * $i)});
+			#{'--a--color--' + $colorName + '-' + $i}: hsl(#{$shade}, var(--a--color--saturation), #{100% - (10% * $i)});
 		}
 	}
 
@@ -101,8 +101,8 @@ html[data-theme="dark"] {
 		pink: 330,
 	);
 
-	@each $color, $value in $colors {
-		@include setColor($color, $value);
+	@each $color, $shade in $colors {
+		@include setColor($color, $shade);
 	}
 
 	--a--color--gray-11: hsl(0, 0%, 91%);
