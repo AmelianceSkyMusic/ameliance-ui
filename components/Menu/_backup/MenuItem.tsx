@@ -1,6 +1,6 @@
-// import asm from 'asm-ts-scripts';
+// import { join } from 'ameliance-scripts/scripts/join';
 
-// import s from './MenuItem.module.scss';
+// import c from './menu-item.module.scss';
 
 // interface MenuItem {
 // 	children: React.ReactNode;
@@ -9,43 +9,34 @@
 
 // export function MenuItem({ children, disabled }: MenuItem) {
 // 	return (
-// 		<li className={asm.join(s.MenuItem, disabled && s.disabled)}>{children}</li>
+// 		<li className={join(c.MenuItem, disabled && c.disabled)}>{children}</li>
 // 	);
 // }
 
 import { forwardRef } from 'react';
 
-import asm from 'asm-ts-scripts';
+import { join } from 'ameliance-scripts/scripts/join';
 
-import s from './MenuItem.module.scss';
+import c from './menu-item.module.scss';
 
 type ComponentElementType = HTMLLIElement;
 
 interface MenuItem extends ReactHTMLElementAttributes<ComponentElementType> {
-	children: React.ReactNode;
-	disabled?: boolean;
+   children: React.ReactNode;
+   disabled?: boolean;
 }
 
-export const MenuItem = forwardRef<ComponentElementType, MenuItem>(({
-	disabled,
-	children,
-	className,
-	...rest
-}: MenuItem, ref) => {
-	// *----- create class from props -----
-	const componentClass = [
-		disabled && s.disabled,
-	];
+export const MenuItem = forwardRef<ComponentElementType, MenuItem>(
+   ({ disabled, children, className, ...rest }: MenuItem, ref) => {
+      // *----- create class from props -----
+      const componentClass = [disabled && c.disabled];
 
-	return (
-		<li
-			className={asm.join(s.MenuItem, className, componentClass)}
-			ref={ref}
-			{...rest}
-		>
-			{children}
-		</li>
-	);
-});
+      return (
+         <li className={join(c.MenuItem, className, componentClass)} ref={ref} {...rest}>
+            {children}
+         </li>
+      );
+   },
+);
 
 MenuItem.displayName = 'MenuItem';

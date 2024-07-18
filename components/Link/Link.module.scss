@@ -1,48 +1,47 @@
 @use "../../styles/globals/" as *;
-@use "Link.root" as *;
 
-.Link {
-	color: var(--color__link);
-	text-decoration: underline;
-	text-underline-offset: 4px;
+.root {
+   text-underline-offset: 4px;
+   color: var(--a--color--link);
+   text-decoration: underline;
 
-	&.noUnderline {
-		text-decoration: none;
-	}
+   &.noUnderline {
+      text-decoration: none;
+   }
 
-	@include inverted {
-		color: var(--color__link-inversion);
-	}
+   @include inverted {
+      color: var(--a--color--link-inversion);
+   }
 
-	@include hover-animation;
+   @include hover-animation;
 
-	&.hover {
-		@include hover {
-			color: var(--color__link_hover);
-			text-decoration: underline;
-			text-underline-offset: 4px;
+   &.hover {
+      @include hover {
+         text-underline-offset: 4px;
+         color: var(--a--color--link-hover);
+         text-decoration: underline;
 
-			&.noUnderline {
-				text-decoration: none;
-			}
+         &.noUnderline {
+            text-decoration: none;
+         }
 
-			@include inverted {
-				color: var(--color__link-inversion_hover);
-			}
-		}
-	}
+         @include inverted {
+            color: var(--a--color--link-inversion-hover);
+         }
+      }
+   }
 
-	@include active {
-		color: var(--color__link_active);
-		@include inverted {
-			color: var(--color__link-inversion_active);
-		}
-	}
+   @include active {
+      color: var(--a--color--link-active);
+      @include inverted {
+         color: var(--a--color--link-inversion-active);
+      }
+   }
 
-	@include disabled {
-		color: var(--color__link_disabled);
-		@include inverted {
-			color: var(--color__link-inversion_disabled);
-		}
-	}
+   @include disabled {
+      color: var(--a--color--link-disabled);
+      @include inverted {
+         color: var(--a--color--link-inversion-disabled);
+      }
+   }
 }

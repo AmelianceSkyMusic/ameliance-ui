@@ -1,24 +1,18 @@
 // import { Icon } from '~components/Icon';
 
-import s from './FileUpload.module.scss';
+import c from './file-upload.module.scss';
 
 interface Props {
-	icon: string;
+   icon: string;
 }
 
-export function FileUpload({
-	icon,
-}: Props) {
-	return (
-		<div>
-			<label htmlFor="file">
-				{/* <Icon icon={icon} /> */}
-				<input
-					type="file"
-					className={s.input}
-					id="file"
-				/>
-			</label>
-		</div>
-	);
+export function FileUpload({ icon }: Props) {
+   return (
+      <div>
+         <label htmlFor="file">
+            {/* <Icon icon={icon} /> */}
+            <input type="file" className={c.input} id="file" />
+         </label>
+      </div>
+   );
 }

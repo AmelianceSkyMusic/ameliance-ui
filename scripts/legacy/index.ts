@@ -1,2 +1,2 @@
-export { addChangeThemeListener } from './addChangeThemeListener';
-export { getThemeState } from './getThemeState';
+export { addChangeThemeListener } from './add-change-theme-listener';
+export { getThemeState } from './get-theme-state';

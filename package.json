@@ -1,0 +1,10 @@
+{
+   "name": "ameliance-ui",
+   "version": "0.0.1",
+   "dependencies": {
+      "ameliance-scripts": "^0.2.4"
+   },
+   "devDependencies": {
+      "sass": "^1.77.0"
+   }
+}

@@ -1,3 +1,3 @@
-export * from './AccordionItem';
-export * from './AccordionList';
-export * from './AccordionListItem';
+export * from './accordion-item';
+export * from './accordion-list';
+export * from './accordion-list-item';

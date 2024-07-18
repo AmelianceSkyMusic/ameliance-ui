@@ -1,6 +1,0 @@
-@mixin setFontColor($font__color, $font__color_inversion) {
-	color: $font__color;
-	&.inversion {
-		color: $font__color_inversion;
-	}
-}

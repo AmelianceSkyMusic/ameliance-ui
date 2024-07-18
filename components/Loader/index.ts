@@ -1,3 +1,3 @@
-export * from './LoaderBars';
-export * from './LoaderCounter';
-export * from './LoaderLine';
+export * from './loader-bars';
+export * from './loader-counter';
+export * from './loader-line';

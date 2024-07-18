@@ -1,19 +1,17 @@
-import asm from 'asm-ts-scripts';
+import { Backdrop } from '../backdrop/backdrop';
+import { Block } from '../blocks/block';
+import { LoaderLine } from '../loader/loader-line';
+import { Portal } from '../portal';
 
-import { Backdrop } from '../Backdrop/Backdrop';
-import { Block } from '../blocks/Block';
-import { LoaderLine } from '../Loader/LoaderLine';
-import { Portal } from '../Portal';
-
-import s from './LoaderOverlay.module.scss';
+import c from './loader-overlay.module.scss';
 
 export function LoaderOverlay() {
-	return (
-		<Portal>
-			<Block className={asm.join(s.LoaderOverlay)}>
-				<Backdrop show />
-				<LoaderLine />
-			</Block>
-		</Portal>
-	);
+   return (
+      <Portal>
+         <Block className={join(c.LoaderOverlay)}>
+            <Backdrop show />
+            <LoaderLine />
+         </Block>
+      </Portal>
+   );
 }

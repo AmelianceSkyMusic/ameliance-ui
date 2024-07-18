@@ -1,11 +1,11 @@
-import s from './LoaderBars.module.scss';
+import c from './loader-bars.module.scss';
 
 export function LoaderBars() {
-	return (
-		<div className={s.LoaderBars}>
-			<div />
-			<div />
-			<div />
-		</div>
-	);
+   return (
+      <div className={c.LoaderBars}>
+         <div />
+         <div />
+         <div />
+      </div>
+   );
 }

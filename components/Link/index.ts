@@ -1,2 +1,2 @@
-export * from './Link';
-export * from './LinkLabel';
+export * from './link';
+export * from './link-label';

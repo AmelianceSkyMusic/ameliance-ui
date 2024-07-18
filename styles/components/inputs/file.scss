@@ -3,32 +3,32 @@ input[type="file"] {
 }
 
 input[type="file"]::-webkit-file-upload-button {
+   visibility: hidden;
    width: 10px;
    height: 0;
    margin: 0;
    padding: 0;
-   visibility: hidden;
    color: transparent;
 }
 
 input[type="file"]::before {
-   height: 24px;
-   vertical-align: middle;
-   content: "Select files";
-   color: var(--color--f1-1);
    display: inline-block;
-   background-color: none;
-   border: 1px solid var(--color--f1-1);
-   border-radius: 4px;
+   height: 24px;
    padding: 3px 8px 0px 8px;
-   // outline: none;
+   border: 1px solid var(--a--color--f1-1);
+   border-radius: 4px;
+   color: var(--a--color--f1-1);
+   vertical-align: middle;
    white-space: nowrap;
-   user-select: none;
    cursor: pointer;
+   // outline: none;
+   user-select: none;
+   content: "Select files";
+   background-color: none;
 }
 
 input[type="file"]:hover::before {
-   border: 1px solid var(--color--f1-1);
+   border: 1px solid var(--a--color--f1-1);
 }
 
 // input[type="file"]:active {
@@ -36,5 +36,5 @@ input[type="file"]:hover::before {
 // }
 
 input[type="file"]:active::before {
-   border: 1px solid var(--color--f1-1);
+   border: 1px solid var(--a--color--f1-1);
 }

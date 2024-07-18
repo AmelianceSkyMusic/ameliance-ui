@@ -1,52 +1,49 @@
 import { useEffect, useState } from 'react';
 
-import asm from 'asm-ts-scripts';
+import { useScroll } from '../../..hooks-use-scroll';
+import { useWindowSize } from '../../..hooks-use-window-size';
 
-import { useScroll } from '../../../hooks/useScroll';
-import { useWindowSize } from '../../../hooks/useWindowSize';
-
-import s from './StickyButton.module.scss';
+import c from '.sticky-button.module.scss';
 
 interface StickyButton {
-	children: React.ReactNode;
-	popup?: boolean;
-	inverseDirection?: boolean;
-	hideOnScreensCount?: number;
+   children: React.ReactNode;
+   popup?: boolean;
+   inverseDirection?: boolean;
+   hideOnScreensCount?: number;
 }
 
 export function StickyButton({
-	children, popup, inverseDirection, hideOnScreensCount = 0,
+   children,
+   popup,
+   inverseDirection,
+   hideOnScreensCount = 0,
 }: StickyButton) {
-	const [animationClass, setAnimationClass] = useState(s.hide);
+   const [animationClass, setAnimationClass] = useState(c.hide);
 
-	// const [animationClass, setAnimationClass] = useState(initHide ? s.hide : '');
+   // const [animationClass, setAnimationClass] = useState(initHide ? c.hide : '');
 
-	// useEffect(() => {
-	// 	setAnimationClass((prev) => asm.join(s.initAnimation, prev));
-	// }, []);
-	const { windowHeight } = useWindowSize();
+   // useEffect(() => {
+   // 	setAnimationClass((prev) => asm.join(c.initAnimation, prev));
+   // }, []);
+   const { windowHeight } = useWindowSize();
 
-	const { scrollDirection, scrollPosition } = useScroll(200);
+   const { scrollDirection, scrollPosition } = useScroll(200);
 
-	useEffect(() => {
-		const isScreenHide = scrollPosition > windowHeight * hideOnScreensCount;
+   useEffect(() => {
+      const isScreenHide = scrollPosition > windowHeight * hideOnScreensCount;
 
-		if (isScreenHide && inverseDirection && scrollDirection === 'up') {
-			setAnimationClass(s.show);
-		} else if (isScreenHide && inverseDirection && scrollDirection === 'down') {
-			setAnimationClass(s.hide);
-		} else if (isScreenHide && scrollDirection === 'up') {
-			setAnimationClass(s.hide);
-		} else if (isScreenHide && scrollDirection === 'down') {
-			setAnimationClass(s.show);
-		} else {
-			setAnimationClass(s.hide);
-		}
-	}, [hideOnScreensCount, inverseDirection, scrollDirection, scrollPosition, windowHeight]);
+      if (isScreenHide && inverseDirection && scrollDirection === 'up') {
+         setAnimationClass(c.show);
+      } else if (isScreenHide && inverseDirection && scrollDirection === 'down') {
+         setAnimationClass(c.hide);
+      } else if (isScreenHide && scrollDirection === 'up') {
+         setAnimationClass(c.hide);
+      } else if (isScreenHide && scrollDirection === 'down') {
+         setAnimationClass(c.show);
+      } else {
+         setAnimationClass(c.hide);
+      }
+   }, [hideOnScreensCount, inverseDirection, scrollDirection, scrollPosition, windowHeight]);
 
-	return (
-		<div className={asm.join(s.StickyButton, popup && animationClass)}>
-			{children}
-		</div>
-	);
+   return <div className={asm.join(c.StickyButton, popup && animationClass)}>{children}</div>;
 }
