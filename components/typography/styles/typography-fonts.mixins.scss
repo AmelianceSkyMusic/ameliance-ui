@@ -1,0 +1,19 @@
+@mixin initFontFontFace($font-family-name, $font-path, $font-family-file, $font-weight) {
+	@font-face {
+		font-family: $font-family-name;
+		src: local($font-family-file), url($font-path + $font-family-file);
+		font-weight: $font-weight;
+		font-display: swap;
+	}
+}
+
+@mixin setFont($font-family, $font-size, $font-weight, $font-line-height, $letter-spacing: 0, $font-style) {
+	font-family: $font-family;
+	font-size: $font-size;
+	line-height: $font-line-height;
+	font-weight: $font-weight;
+	letter-spacing: $letter-spacing;
+	font-style: $font-style;
+	margin: 0;
+	padding: 0;
+}

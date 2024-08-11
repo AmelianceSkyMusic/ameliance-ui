@@ -1,0 +1,126 @@
+@use "../../../styles/globals/" as *;
+
+.root {
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   // height: 42px;
+   // min-width: 42px;
+   width: fit-content;
+   padding: 0 var(--a--chip--side-padding);
+   border: var(--a--chip--border-size) var(--a--chip--border) solid;
+   border-radius: var(--a--chip--radius);
+   border-radius: 1000px;
+   color: var(--a--chip--color);
+
+   cursor: pointer;
+
+   background-color: var(--a--chip--background);
+
+   @include size-tiny {
+      min-width: var(--a--chip--width-tiny);
+      height: var(--a--chip--height-tiny);
+   }
+
+   @include size-small {
+      min-width: var(--a--chip--width-small);
+      height: var(--a--chip--height-small);
+   }
+
+   @include size-default {
+      min-width: var(--a--chip--width-default);
+      height: var(--a--chip--height-default);
+   }
+
+   @include size-medium {
+      min-width: var(--a--chip--width-medium);
+      height: var(--a--chip--height-medium);
+   }
+
+   @include size-large {
+      min-width: var(--a--chip--width-large);
+      height: var(--a--chip--height-large);
+   }
+
+   @include size-extra {
+      min-width: var(--a--chip--width-extra);
+      height: var(--a--chip--height-extra);
+   }
+
+   @include clickable;
+
+   @include hover-animation;
+
+   @include disabled;
+
+   @include hover {
+      border-color: var(--a--chip--border-hover);
+      color: var(--a--chip--color-hover);
+      background-color: var(--a--chip--background-hover);
+   }
+
+   // @include active {
+   // 	background-color: var(--a--chip--background-active);
+   // }
+
+   // @include hover {
+   // 	background-color: var(--color--e1-2);
+   // }
+   &.selected {
+      border-color: var(--a--chip--border-selected);
+      color: var(--a--chip--color-selected);
+      background-color: var(--a--chip--background-selected);
+      @include hover {
+         border-color: var(--a--chip--border-selected-hover);
+         color: var(--a--chip--color-selected-hover);
+         background-color: var(--a--chip--background-selected-hover);
+      }
+
+      // @include active {
+      // 	background-color: var(--a--chip--background-selected-active);
+      // }
+   }
+
+   // @include active {
+   // }
+}
+
+.label {
+   display: flex;
+   opacity: 100%;
+   justify-content: center;
+   align-items: center;
+   height: var(--a--chip--label-height-default);
+   column-gap: 8px;
+   color: inherit;
+
+   @include size-tiny {
+      height: var(--a--chip--label-height-tiny);
+      font-size: var(--a--chip--font-size-tiny);
+   }
+
+   @include size-small {
+      height: var(--a--chip--label-height-small);
+      font-size: var(--a--chip--font-size-small);
+   }
+
+   @include size-default {
+      height: var(--a--chip--label-height-default);
+      font-size: var(--a--chip--font-size-default);
+   }
+
+   @include size-medium {
+      height: var(--a--chip--label-height-medium);
+      font-size: var(--a--chip--font-size-medium);
+   }
+
+   @include size-large {
+      height: var(--a--chip--label-height-large);
+      font-size: var(--a--chip--font-size-large);
+   }
+
+   @include size-extra {
+      height: var(--a--chip--label-height-extra);
+      font-size: var(--a--chip--font-size-extra);
+   }
+}

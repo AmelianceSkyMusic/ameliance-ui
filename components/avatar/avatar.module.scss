@@ -1,0 +1,42 @@
+// @use "../../styles/globals/" as *;
+
+// .img {
+//    object-fit: cover;
+//    width: 54px;
+//    height: 54px;
+//    border-radius: 50%;
+//    &.small {
+//       width: 36px;
+//       height: 36px;
+//    }
+//    &.extra {
+//       width: 256px;
+//       height: 256px;
+//    }
+// }
+
+// .charContainer {
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    width: 54px;
+//    height: 54px;
+//    border-radius: 50%;
+//    color: var(--color--f2-1);
+//    background-color: var(--color--e1-0);
+//    .char {
+//       opacity: 70%;
+//    }
+//    &.small {
+//       width: 36px;
+//       height: 36px;
+//    }
+//    &.extra {
+//       width: 256px;
+//       height: 256px;
+//    }
+// }
+
+// .clickable {
+//    @include clickable;
+// }

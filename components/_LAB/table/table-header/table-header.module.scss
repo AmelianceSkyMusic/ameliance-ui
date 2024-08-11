@@ -1,0 +1,17 @@
+.root {
+   @apply sticky
+	top-0
+	z-10;
+}
+
+.row {
+   @apply flex
+	items-center
+	justify-between
+	bg-red-600;
+}
+
+.cell {
+   @apply flex
+	p-2;
+}

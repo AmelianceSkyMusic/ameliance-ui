@@ -1,0 +1,6 @@
+@mixin active {
+	&:active {
+		transition: 0s;
+		@content;
+	}
+}
