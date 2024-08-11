@@ -1,0 +1,101 @@
+@use "../../styles/globals/" as *;
+
+.menu {
+   gap: 8px;
+   display: flex;
+   z-index: -1;
+   position: absolute;
+   right: 0;
+   bottom: 0px;
+   flex-direction: column; // TODO: add as option to component. Change width item
+   align-items: flex-end;
+   pointer-events: none;
+}
+
+.menuItem {
+   --sticky-menu-offset: 0;
+   display: flex;
+   opacity: 0;
+   position: relative;
+   right: 0;
+   bottom: 0;
+   align-items: center;
+   height: 42px;
+   padding: 6px 16px;
+   border-radius: 1000px;
+   white-space: nowrap;
+   user-select: none;
+   background-color: var(--color--b1-2);
+   transition: transform 0.2s ease-in-out, opacity 0.15s ease-in-out 0.05s;
+   transform: translateY(var(--sticky-menu-offset));
+
+   @include clickable;
+
+   @include hover {
+      background-color: var(--color--b1-1);
+   }
+
+   @include active {
+      background-color: var(--color--b1-2);
+   }
+
+   @include disabled;
+   &.menuDivider {
+      visibility: hidden;
+      height: 0;
+      padding: 0;
+   }
+}
+
+.menuTitle {
+   opacity: 0;
+   transition: opacity 0.1s ease-in-out;
+}
+
+.open {
+   .menu {
+      pointer-events: auto;
+   }
+   .menuItem {
+      opacity: 100%;
+      transition: transform 0.2s ease-in-out, opacity 0.15s ease-in-out;
+      transform: translateY(calc(-100% - 16px));
+      @extend %box-shadow--default;
+   }
+   .menuTitle {
+      opacity: 100%;
+      transition: opacity 0.1s ease-in-out 0.1s;
+   }
+}
+
+.iconBlock {
+   @include single-layer;
+}
+
+.mainIcon {
+   opacity: 100%;
+}
+
+.plusIcon {
+   opacity: 0%;
+}
+
+.mainIcon,
+.plusIcon {
+   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.open {
+   .mainIcon {
+      opacity: 0%;
+   }
+
+   .plusIcon {
+      opacity: 100%;
+   }
+
+   .mainIcon,
+   .plusIcon {
+      transform: rotate(135deg);
+   }
+}

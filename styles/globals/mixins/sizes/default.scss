@@ -1,0 +1,5 @@
+@mixin size-default {
+	&.default {
+		@content;
+	}
+}

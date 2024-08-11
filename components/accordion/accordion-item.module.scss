@@ -1,0 +1,56 @@
+@use "../../styles/globals/" as *;
+
+.root {
+   gap: 8px;
+   display: flex;
+   flex-direction: column;
+   list-style: none;
+}
+
+.heading {
+   gap: 8px;
+   display: flex;
+   align-items: center;
+   @include clickable {
+      user-select: auto;
+   }
+}
+
+.icon {
+   transition: transform ease-out 0.2s;
+   transform: rotate(-90deg);
+}
+
+.textContainer {
+   row-gap: 12px;
+   display: flex;
+   flex-direction: column;
+   height: 0;
+   padding-left: 32px;
+   overflow: hidden;
+   transition: height ease-out 0.2s;
+}
+
+.active {
+   .icon {
+      transition: transform ease-out 0.2s;
+      transform: rotate(0deg);
+   }
+}
+
+.fullwidth {
+   .icon {
+      order: 1;
+      transition: transform ease-out 0.2s;
+      transform: rotate(90deg);
+   }
+   &.active {
+      .icon {
+         transition: transform ease-out 0.2s;
+         transform: rotate(0deg);
+      }
+   }
+   .textContainer {
+      padding-left: 0px;
+   }
+}

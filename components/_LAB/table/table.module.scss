@@ -1,0 +1,14 @@
+.root {
+   @apply flex
+	w-full
+	border-collapse
+	flex-col
+	overflow-y-auto
+	overflow-x-hidden
+	text-left;
+}
+
+.body {
+   @apply flex
+	flex-col;
+}

@@ -1,0 +1,9 @@
+@mixin useSvgIcon($path, $icons...) {
+	@each $icon in $icons {
+		.#{$icon} {
+			$path: $path;
+			mask-image: url($path + $icon + ".svg");
+			-webkit-mask-image: url($path + $icon + ".svg");
+		}
+	}
+}

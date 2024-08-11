@@ -1,0 +1,9 @@
+@mixin single-layer {
+   & {
+      display: grid;
+      place-items: center;
+      & > * {
+         grid-area: 1 / 1;
+      }
+   }
+}

@@ -1,0 +1,42 @@
+@use "../../styles/globals/" as *;
+
+.Backdrop {
+	--backdrop-opacity: 60%;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	opacity: 60%;
+
+	cursor: pointer;
+	background-color: var(--color--b1-0);
+
+	animation-name: hide-blackout;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}
+
+.Backdrop.show {
+	animation-name: show-blackout;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	@include disabled;
+}
+
+@keyframes show-blackout {
+	from {
+		opacity: 0%;
+	}
+	to {
+		opacity: var(--backdrop-opacity);
+	}
+}
+@keyframes hide-blackout {
+	from {
+		opacity: var(--backdrop-opacity);
+	}
+	to {
+		opacity: 0%;
+	}
+}

@@ -1,0 +1,47 @@
+@use "../../styles/globals/" as *;
+
+.root {
+   text-underline-offset: 4px;
+   color: var(--a--color--link);
+   text-decoration: underline;
+
+   &.noUnderline {
+      text-decoration: none;
+   }
+
+   @include inverted {
+      color: var(--a--color--link-inversion);
+   }
+
+   @include hover-animation;
+
+   &.hover {
+      @include hover {
+         text-underline-offset: 4px;
+         color: var(--a--color--link-hover);
+         text-decoration: underline;
+
+         &.noUnderline {
+            text-decoration: none;
+         }
+
+         @include inverted {
+            color: var(--a--color--link-inversion-hover);
+         }
+      }
+   }
+
+   @include active {
+      color: var(--a--color--link-active);
+      @include inverted {
+         color: var(--a--color--link-inversion-active);
+      }
+   }
+
+   @include disabled {
+      color: var(--a--color--link-disabled);
+      @include inverted {
+         color: var(--a--color--link-inversion-disabled);
+      }
+   }
+}
