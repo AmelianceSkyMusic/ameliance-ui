@@ -1,6 +1,0 @@
-@mixin setFontColor($font--color, $font--color--inversion) {
-   color: $font--color;
-   &.inversion {
-      color: $font--color--inversion;
-   }
-}
