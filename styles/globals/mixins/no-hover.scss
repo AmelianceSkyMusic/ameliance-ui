@@ -1,8 +1,0 @@
-@mixin no-hover {
-	@media (hover: hover) {
-		&:hover {
-			cursor: auto;
-			@content;
-		}
-	}
-}

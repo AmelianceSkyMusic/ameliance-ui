@@ -1,9 +1,0 @@
-@mixin single-layer {
-	& {
-		display: grid;
-
-		& > * {
-			grid-area: 1 / 1;
-		}
-	}
-}
