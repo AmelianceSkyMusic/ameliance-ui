@@ -1,19 +1,15 @@
 .root {
-   @apply flex
-	items-center
-	justify-between
-	border-b
-	border-red-600
-	hover:bg-red-950;
-
-   /* &:hover {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	&:hover {
 		background-color: var(--a--color--red-9);
 	}
-	border-bottom: 1px solid var(--a--color--red-8); */
+	border-bottom: 1px solid var(--a--color--red-8);
 }
 
 .cell {
-   @apply flex
-	overflow-hidden
-	p-2;
+	display: flex;
+	padding: 8px 8px;
+	overflow: hidden;
 }

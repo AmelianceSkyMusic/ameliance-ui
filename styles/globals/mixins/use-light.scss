@@ -1,0 +1,5 @@
+@mixin use-light {
+	[data-ameliance-ui-theme="light"] & {
+		@content;
+	}
+}

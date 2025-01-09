@@ -1,41 +1,42 @@
-:root {
-   --a--color--caption: var(--a--color--f1-1);
-   --a--color--caption_inversion: var(--a--color--f2-1);
-   --a--color--h1: var(--a--color--f1-1);
-   --a--color--h1_inversion: var(--a--color--f2-1);
-   --a--color--h2: var(--a--color--f1-1);
-   --a--color--h2_inversion: var(--a--color--f2-1);
-   --a--color--h3: var(--a--color--f1-1);
-   --a--color--h3_inversion: var(--a--color--f2-1);
-   --a--color--h4: var(--a--color--f1-1);
-   --a--color--h4_inversion: var(--a--color--f2-1);
-   --a--color--h5: var(--a--color--f1-1);
-   --a--color--h5_inversion: var(--a--color--f2-1);
-   // --a--color--button: var(--a--color--a1-1);
-   // --a--color--button-sm: var(--a--color--f1-1);
-   // --a--color--button-icon: var(--a--color--f1-1);
-   // --a--color--button-icon-sm: var(--a--color--f1-1);
-   --a--color--h6: var(--a--color--f1-1);
-   --a--color--h6_inversion: var(--a--color--f2-1);
-   --a--color--input: var(--a--color--f1-1);
+@use "../../../styles/globals/" as *;
 
-   --a--color--input_inversion: var(--a--color--f2-1);
-   --a--color--link: var(--a--color--f1-1);
-   --a--color--link-sm: var(--a--color--f1-1);
-   --a--color--link-sm_inversion: var(--a--color--f2-1);
-   --a--color--link_inversion: var(--a--color--f2-1);
-   --a--color--overline: var(--a--color--f1-1);
-   --a--color--overline_inversion: var(--a--color--f2-1);
-   --a--color--p1: var(--a--color--f1-1);
-   --a--color--p1_inversion: var(--a--color--f2-1);
-   --a--color--p2: var(--a--color--f1-1);
-   --a--color--p2_inversion: var(--a--color--f2-1);
-   --a--color--subtitle1: var(--a--color--f1-1);
-   // --a--color--button_inversion: var(--a--color--f2-1);
-   // --a--color--button-sm_inversion: var(--a--color--f2-1);
-   // --a--color--button-icon_inversion: var(--a--color--f2-1);
-   // --a--color--button-icon-sm_inversion: var(--a--color--f2-1);
-   --a--color--subtitle1_inversion: var(--a--color--f2-1);
-   --a--color--subtitle2: var(--a--color--f1-1);
-   --a--color--subtitle2_inversion: var(--a--color--f2-1);
+//* Map with colors which converted to --a--color--* variables
+:root {
+	$typography-color-map: (
+		"caption": shade-35,
+		"caption_inversion": shade-75,
+		"h1": shade-35,
+		"h1_inversion": shade-75,
+		"h2": shade-35,
+		"h2_inversion": shade-75,
+		"h3": shade-35,
+		"h3_inversion": shade-75,
+		"h4": shade-35,
+		"h4_inversion": shade-75,
+		"h5": shade-35,
+		"h5_inversion": shade-75,
+		"h6": shade-35,
+		"h6_inversion": shade-75,
+		"input": shade-35,
+		"input_inversion": shade-75,
+		"link": shade-35,
+		"link_inversion": shade-75,
+		"overline": shade-35,
+		"overline_inversion": shade-75,
+		"p1": shade-35,
+		"p1_inversion": shade-75,
+		"p2": shade-35,
+		"p2_inversion": shade-75,
+		"subtitle1": shade-35,
+		"subtitle1_inversion": shade-75,
+		"subtitle2": shade-35,
+		"subtitle2_inversion": shade-75,
+		"code": shade-opacity-05,
+		"code_inversion": shade-opacity-05,
+	);
+
+	$prefix: "--a--color--";
+	@each $name, $color-key in $typography-color-map {
+		#{$prefix + $name}: get-color($color-key);
+	}
 }

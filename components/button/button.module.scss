@@ -1,153 +1,154 @@
 @use "../../styles/globals/" as *;
 
 .root {
-   display: flex;
-   flex-shrink: 0;
-   justify-content: center;
-   align-items: center;
-   padding: 0 var(--a--button--side-padding);
-   border: none;
-   border-radius: var(--a--button--radius);
-   color: var(--a--button--color);
-   user-select: none;
-   background: none;
+	display: flex;
+	padding: 0 var(--a--button--side-padding);
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+	color: var(--a--button--color);
+	user-select: none;
+	background: none;
+	background-color: var(--a--button--background);
+	border: none;
 
-   background-color: var(--a--button--background);
+	border-radius: var(--a--button--radius);
 
-   @include size-tiny {
-      height: var(--a--button--height--tiny);
-   }
+	@include size-tiny {
+		height: var(--a--button--height--tiny);
+	}
 
-   @include size-small {
-      height: var(--a--button--height--small);
-   }
+	@include size-small {
+		height: var(--a--button--height--small);
+	}
 
-   @include size-default {
-      height: var(--a--button--height--default);
-   }
+	@include size-default {
+		height: var(--a--button--height--default);
+	}
 
-   @include size-medium {
-      height: var(--a--button--height--medium);
-   }
+	@include size-medium {
+		height: var(--a--button--height--medium);
+	}
 
-   @include size-large {
-      height: var(--a--button--height--large);
-   }
+	@include size-large {
+		height: var(--a--button--height--large);
+	}
 
-   @include size-extra {
-      height: var(--a--button--height--extra);
-   }
+	@include size-extra {
+		height: var(--a--button--height--extra);
+	}
 
-   @include clickable;
+	@extend %set-clickable;
 
-   @include hover-animation;
+	@include use-focus-visible;
 
-   @include disabled;
+	@include hover-animation;
 
-   @include hover {
-      background-color: var(--a--button--background--hover);
-   }
+	@include use-disabled;
 
-   @include active {
-      background-color: var(--a--button--background--active);
-   }
+	@include use-hover {
+		background-color: var(--a--button--background--hover);
+	}
 
-   .label {
-      display: flex;
-      opacity: 100%;
-      justify-content: center;
-      align-items: center;
-      height: var(--a--button--label-height);
-      column-gap: 8px;
-      color: inherit;
+	@include use-clicked {
+		background-color: var(--a--button--background--active);
+	}
 
-      // @include size-small {
-      // 	height: var(--a--button--label-height--small);
-      // }
+	.label {
+		display: flex;
+		height: var(--a--button--label-height);
+		justify-content: center;
+		align-items: center;
+		column-gap: 8px;
+		color: inherit;
+		opacity: 100%;
 
-      // @include size-medium {
-      // 	height: var(--a--button--label-height--medium);
-      // }
+		// @include size-small {
+		// 	height: var(--a--button--label-height--small);
+		// }
 
-      // @include size-large {
-      // 	height: var(--a--button--label-height--large);
-      // }
+		// @include size-medium {
+		// 	height: var(--a--button--label-height--medium);
+		// }
 
-      @include size-tiny {
-         font-size: var(--a--button--font-size--tiny);
-      }
+		// @include size-large {
+		// 	height: var(--a--button--label-height--large);
+		// }
 
-      @include size-small {
-         font-size: var(--a--button--font-size--small);
-      }
+		@include size-tiny {
+			font-size: var(--a--button--font-size--tiny);
+		}
 
-      @include size-default {
-         font-size: var(--a--button--font-size--default);
-      }
+		@include size-small {
+			font-size: var(--a--button--font-size--small);
+		}
 
-      @include size-medium {
-         font-size: var(--a--button--font-size--medium);
-      }
+		@include size-default {
+			font-size: var(--a--button--font-size--default);
+		}
 
-      @include size-large {
-         font-size: var(--a--button--font-size--large);
-      }
+		@include size-medium {
+			font-size: var(--a--button--font-size--medium);
+		}
 
-      @include size-extra {
-         font-size: var(--a--button--font-size--extra);
-      }
-   }
+		@include size-large {
+			font-size: var(--a--button--font-size--large);
+		}
 
-   &.icon {
-      padding: 0;
-      border-radius: 50%;
+		@include size-extra {
+			font-size: var(--a--button--font-size--extra);
+		}
+	}
 
-      @include size-tiny {
-         width: var(--a--button--width--tiny);
-      }
+	&.icon {
+		padding: 0;
+		border-radius: 50%;
 
-      @include size-small {
-         width: var(--a--button--width--small);
-      }
+		@include size-tiny {
+			width: var(--a--button--width--tiny);
+		}
 
-      @include size-default {
-         width: var(--a--button--width--default);
-      }
+		@include size-small {
+			width: var(--a--button--width--small);
+		}
 
-      @include size-medium {
-         width: var(--a--button--width--medium);
-      }
+		@include size-default {
+			width: var(--a--button--width--default);
+		}
 
-      @include size-large {
-         width: var(--a--button--width--large);
-      }
+		@include size-medium {
+			width: var(--a--button--width--medium);
+		}
 
-      @include size-extra {
-         width: var(--a--button--width--extra);
-      }
-   }
+		@include size-large {
+			width: var(--a--button--width--large);
+		}
+
+		@include size-extra {
+			width: var(--a--button--width--extra);
+		}
+	}
 }
 
 .secondary {
-   border: var(--a--button--border-size) solid var(--a--button-secondary--border);
-   color: var(--a--button-secondary--color);
-   background: none;
-   background-color: var(--a--button-secondary--background);
-   @include hover {
-      background-color: var(--a--button-secondary--background--hover);
-   }
-   @include active {
-      background-color: var(--a--button-secondary--background--active);
-   }
+	color: var(--a--button--secondary--color);
+	background-color: var(--a--button--secondary--background);
+	border: var(--a--button--border-size) solid var(--a--button--secondary--border);
+	@include use-hover {
+		background-color: var(--a--button--secondary--background--hover);
+	}
+	@include use-clicked {
+		background-color: var(--a--button--secondary--background--active);
+	}
 }
 
 .text {
-   color: var(--a--button-text--color);
-   background: none;
-   @include hover {
-      background-color: var(--a--button-text--background--hover);
-   }
-   @include active {
-      background-color: var(--a--button-text--background--active);
-   }
+	color: var(--a--button--text--color);
+	background-color: var(--a--button--text--background);
+	@include use-hover {
+		background-color: var(--a--button--text--background--hover);
+	}
+	@include use-clicked {
+		background-color: var(--a--button--text--background--active);
+	}
 }

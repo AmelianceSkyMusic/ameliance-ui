@@ -1,52 +1,52 @@
 .container {
-   display: inline-block;
-   display: flex;
-   align-items: center;
-   height: 16px;
-   margin-top: 6px;
-   column-gap: 8px;
-   cursor: pointer;
+	display: inline-block;
+	display: flex;
+	height: 16px;
+	margin-top: 6px;
+	align-items: center;
+	column-gap: 8px;
+	cursor: pointer;
 
-   // &:hover .switcher__element:before {
-   //   background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-   // }
+	// &:hover .switcher__element:before {
+	//   background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+	// }
 }
 
 .element {
-   display: inline-block;
-   position: relative;
-   width: 24px;
-   height: 14px;
-   border: 1px solid var(--a--color--f1-1);
-   border-radius: 16px;
-   vertical-align: middle;
-   transition: background-color 0.2s;
-   &:before,
-   &:after {
-      content: "";
-   }
-   &:before {
-      display: block;
-      // background-color: var(--color--f1-1);
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 8px;
-      height: 8px;
-      border: 1px solid var(--a--color--f1-1);
-      border-radius: 50%;
-      transition: left 0.25s;
-   }
+	position: relative;
+	display: inline-block;
+	width: 24px;
+	height: 14px;
+	vertical-align: middle;
+	border: 1px solid get-color(shade-35);
+	border-radius: 16px;
+	transition: background-color 0.2s;
+	&:before,
+	&:after {
+		content: "";
+	}
+	&:before {
+		position: absolute;
+		// background-color: get-color(shade-35);
+		top: 2px;
+		left: 2px;
+		display: block;
+		width: 8px;
+		height: 8px;
+		border: 1px solid get-color(shade-35);
+		border-radius: 50%;
+		transition: left 0.25s;
+	}
 }
 
 .checkbox {
-   visibility: hidden;
-   position: absolute;
-   &:checked + .element {
-      background-color: none;
-   }
-   &:checked + .element:before {
-      left: 12px;
-      background-color: var(--a--color--f1-1);
-   }
+	position: absolute;
+	visibility: hidden;
+	&:checked + .element {
+		background-color: none;
+	}
+	&:checked + .element:before {
+		left: 12px;
+		background-color: get-color(shade-35);
+	}
 }

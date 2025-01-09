@@ -1,0 +1,23 @@
+@use "../../../styles/globals/" as *;
+
+//* Map with colors which converted to --a--color--* variables
+
+:root {
+	$link-color-map: (
+		color: shade-35,
+		active: low,
+		clicked: shade-40,
+		disabled: shade-35,
+		hover: shade-20,
+		inversion: shade-15,
+		inversion--active: low,
+		inversion--clicked: shade-80,
+		inversion--disabled: shade-15,
+		inversion--hover: shade-70,
+	);
+
+	$prefix: "--a--link--";
+	@each $name, $color-key in $link-color-map {
+		#{$prefix + $name}: get-color($color-key);
+	}
+}

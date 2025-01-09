@@ -1,37 +1,104 @@
+// import { forwardRef } from 'react';
+
+// import { join } from 'ameliance-scripts';
+
+// import { ReactChildren } from '../_LAB/react-children';
+
+// import c from './list.module.scss';
+
+// export type List2Element = HTMLUList2Element | HTMLOList2Element;
+
+// export type List2Props = React.ComponentPropsWithoutRef<'ul'> &
+// 	React.ComponentPropsWithoutRef<'ol'> & {
+// 		type?: 'unordered' | 'ordered' | 'custom' | 'empty';
+// 		margin?: number;
+// 	};
+
+// export const List2 = forwardRef<List2Element, List2Props>(
+// 	({ type = 'unordered', margin, children, className, ...rest }, ref) => {
+// 		const componentClass = [type === 'unordered' && c[type], type === 'custom' && c[type]];
+
+// 		const componentStyle = {
+// 			marginLeft: margin && `${margin}px`,
+// 		};
+
+// 		return (
+// 			<>
+// 				{type === 'ordered' ? (
+// 					<ol
+// 						className={join(c.root, className, componentClass)}
+// 						style={componentStyle}
+// 						{...rest}
+// 						ref={ref}
+// 					>
+// 						<ReactChildren style={componentStyle}>{children}</ReactChildren>
+// 					</ol>
+// 				) : (
+// 					<ul
+// 						className={join(c.root, className, componentClass)}
+// 						style={componentStyle}
+// 						{...rest}
+// 						ref={ref}
+// 					>
+// 						<ReactChildren style={componentStyle}>{children}</ReactChildren>
+// 					</ul>
+// 				)}
+// 			</>
+// 		);
+// 	},
+// );
+
+// List2.displayName = 'List2';
+
+import type { ElementType } from 'react';
 import { forwardRef } from 'react';
 
-import { ReactChildren } from '../_LAB/react-children';
+import { getMatch, join } from 'ameliance-scripts';
+
+import { Component } from '../_LAB/component';
 
 import c from './list.module.scss';
 
-import { join } from 'ameliance-scripts/scripts/join';
+export type ListElement = HTMLUListElement | HTMLOListElement | HTMLDListElement;
 
-export type ListElement = HTMLUListElement;
-
-export type ListProps = React.ComponentPropsWithoutRef<'ul'> & {
-   type?: 'unordered' | 'custom';
-   margin?: number;
-};
+export type ListProps = React.ComponentPropsWithoutRef<'ul'> &
+	React.ComponentPropsWithoutRef<'ol'> &
+	React.ComponentPropsWithoutRef<'dl'> & {
+		component?: ElementType;
+		margin?: number;
+		variant?: 'unordered' | 'ordered' | 'description' | 'plain';
+	};
 
 export const List = forwardRef<ListElement, ListProps>(
-   ({ type, margin, children, className, ...rest }, ref) => {
-      const componentClass = [type === 'unordered' && c[type], type === 'custom' && c[type]];
+	({ component, margin, variant = 'unordered', children, className, ...rest }, ref) => {
+		const componentClass = [c[variant]];
 
-      const componentStyle = {
-         marginLeft: margin && `${margin}px`,
-      };
+		const listComponent =
+			component ||
+			getMatch<string, ElementType>(variant, {
+				unordered: 'ul',
+				ordered: 'ol',
+				description: 'dl',
+				_: 'ul',
+			});
 
-      return (
-         <ul
-            className={join(c.root, className, componentClass)}
-            ref={ref}
-            style={componentStyle}
-            {...rest}
-         >
-            <ReactChildren style={componentStyle}>{children}</ReactChildren>
-         </ul>
-      );
-   },
+		const componentStyle = {
+			marginLeft: margin && `${margin}px`,
+		};
+
+		const attributes = {
+			className: join(c.root, className, componentClass),
+			style: componentStyle,
+			ref,
+			...rest,
+		};
+
+		return (
+			<Component as={listComponent} {...attributes}>
+				{children}
+			</Component>
+		);
+	},
 );
 
 List.displayName = 'List';

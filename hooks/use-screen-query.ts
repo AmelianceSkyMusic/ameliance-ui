@@ -1,44 +1,108 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { useEffect, useState } from 'react';
+// @ts-expect-error ignore import
 import { useMediaQuery } from 'react-responsive';
 
 import { SCREEN_SIZES } from '../constants/SCREEN_SIZES';
 
-interface UseScreenQueryReturn {
-	isScreenXX: boolean;
-	isScreenXL: boolean;
-	isScreenLG: boolean;
-	isScreenMD: boolean;
-	isScreenSM: boolean;
-	isScreenXS: boolean;
-	isScreenSS: boolean;
-}
+type UseScreenQueryReturn = {
+	isScreenDesktopXl: boolean;
+	isScreenDesktopLg: boolean;
+	isScreenDesktopMd: boolean;
+	isScreenDesktopSm: boolean;
+
+	isScreenTabletXl: boolean;
+	isScreenTabletLg: boolean;
+	isScreenTabletMd: boolean;
+	isScreenTabletSm: boolean;
+
+	isScreenMobileXl: boolean;
+	isScreenMobileLg: boolean;
+	isScreenMobileMd: boolean;
+	isScreenMobileSm: boolean;
+};
 
 /**
  * Returns a boolean variable corresponding to the screen resolution
  *
- * xx → max-width: Infinity (>1180px)
+ * isScreenDesktopXl → min-width: >1920
+ * isScreenDesktopLg → min-width: >1536
+ * isScreenDesktopMd → min-width: >1440
+ * isScreenDesktopSm → min-width: >1366
  *
- *	xl → max-width: 1179px (>1024px)
+ * isScreenTabletXl → min-width: >1280
+ * isScreenTabletLg → min-width: >1024
+ * isScreenTabletMd → min-width: >960
+ * isScreenTabletSm → min-width: >768
  *
- *	lg → max-width: 1023px (>768px)
+ * isScreenMobileXl → min-width: >540
+ * isScreenMobileLg → min-width: >480
+ * isScreenMobileMd → min-width: >360
+ * isScreenMobileSm → min-width: >0 — default
  *
- *	md → max-width: 767px (>540px)
- *
- *	sm → max-width: 539px (>480px)
- *
- *	xs → max-width: 479px (>360px)
- *
- *	ss → max-width: 359px (>0px)
  */
+
 export function useScreenQuery(): UseScreenQueryReturn {
-	return {
-		isScreenXX: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.xx}px)` }),
-		isScreenXL: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.xl}px)` }),
-		isScreenLG: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.lg}px)` }),
-		isScreenMD: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.md}px)` }),
-		isScreenSM: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.sm}px)` }),
-		isScreenXS: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.xs}px)` }),
-		isScreenSS: useMediaQuery({ query: `(max-width: ${SCREEN_SIZES.ss}px)` }),
-	};
+	const [query, setQuery] = useState({
+		isScreenDesktopXl: false,
+		isScreenDesktopLg: false,
+		isScreenDesktopMd: false,
+		isScreenDesktopSm: false,
+
+		isScreenTabletXl: false,
+		isScreenTabletLg: false,
+		isScreenTabletMd: false,
+		isScreenTabletSm: false,
+
+		isScreenMobileXl: false,
+		isScreenMobileLg: false,
+		isScreenMobileMd: false,
+		isScreenMobileSm: false,
+	});
+
+	const isScreenDesktopXl = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.desktopXl}px)` });
+	const isScreenDesktopLg = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.desktopLg}px)` });
+	const isScreenDesktopMd = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.desktopMd}px)` });
+	const isScreenDesktopSm = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.desktopSm}px)` });
+
+	const isScreenTabletXl = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.tabletXl}px)` });
+	const isScreenTabletLg = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.tabletLg}px)` });
+	const isScreenTabletMd = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.tabletMd}px)` });
+	const isScreenTabletSm = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.tabletSm}px)` });
+
+	const isScreenMobileXl = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.mobileXl}px)` });
+	const isScreenMobileLg = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.mobileLg}px)` });
+	const isScreenMobileMd = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.mobileMd}px)` });
+	const isScreenMobileSm = useMediaQuery({ query: `(min-width: ${SCREEN_SIZES.mobileSm}px)` });
+
+	useEffect(() => {
+		setQuery({
+			isScreenDesktopXl,
+			isScreenDesktopLg,
+			isScreenDesktopMd,
+			isScreenDesktopSm,
+			isScreenTabletXl,
+			isScreenTabletLg,
+			isScreenTabletMd,
+			isScreenTabletSm,
+			isScreenMobileXl,
+			isScreenMobileLg,
+			isScreenMobileMd,
+			isScreenMobileSm,
+		});
+	}, [
+		isScreenDesktopXl,
+		isScreenDesktopLg,
+		isScreenDesktopMd,
+		isScreenDesktopSm,
+		isScreenTabletXl,
+		isScreenTabletLg,
+		isScreenTabletMd,
+		isScreenTabletSm,
+		isScreenMobileXl,
+		isScreenMobileLg,
+		isScreenMobileMd,
+		isScreenMobileSm,
+	]);
+
+	return query;
 }

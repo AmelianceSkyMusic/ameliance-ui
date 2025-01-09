@@ -23,13 +23,13 @@
 
 	width: 18px;
 	height: 18px;
-	border: 2px solid var(--color--b1-2);
+	border: 2px solid get-color(shade-70);
 	border-radius: 50%;
 
 	display: grid;
 	place-content: center;
 	cursor: pointer;
-	background-color: var(--color--b1-1);
+	background-color: get-color(shade-75);
 }
 
 .input[type="radio"]::before {
@@ -39,7 +39,7 @@
 	border-radius: 50%;
 	transform: scale(0);
 	transition: transform 0.2s ease-in-out;
-	box-shadow: inset 1em 1em var(--color--f1-1);
+	box-shadow: inset 1em 1em get-color(shade-35);
 }
 
 .input[type="radio"]:checked::before {

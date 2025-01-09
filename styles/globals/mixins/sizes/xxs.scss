@@ -1,0 +1,5 @@
+@mixin size-xxs {
+   &.xxs {
+      @content;
+   }
+}

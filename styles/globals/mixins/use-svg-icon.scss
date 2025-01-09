@@ -1,4 +1,4 @@
-@mixin useSvgIcon($path, $icons...) {
+@mixin use-svg-icon($path, $icons...) {
 	@each $icon in $icons {
 		.#{$icon} {
 			$path: $path;

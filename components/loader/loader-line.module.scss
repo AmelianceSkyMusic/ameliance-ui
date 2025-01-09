@@ -1,52 +1,58 @@
 .root {
-   display: grid;
-   z-index: 10000;
-   width: 48px;
-   height: 4px;
+	z-index: 10000;
+	display: grid;
+	width: 48px;
+	height: 4px;
 
-   & > * {
-      grid-area: 1 / 1;
-   }
+	& > * {
+		grid-area: 1 / 1;
+	}
 
-   .background {
-      opacity: 30%;
-   }
+	.background {
+		opacity: 30%;
+	}
 
-   &.normal {
-      .animation {
-         background: linear-gradient(var(--color--f1-1) 0 0),
-            linear-gradient(var(--color--f1-1) 0 0);
-         background-repeat: no-repeat;
-         background-size: 60% 100%;
-         animation: loader 2s infinite ease-in-out;
-      }
-      .background {
-         background-color: var(--color--f1-1);
-      }
-   }
+	&.normal {
+		.animation {
+			background: linear-gradient(get-color(shade-35) 0 0),
+				linear-gradient(get-color(shade-35) 0 0);
+			background-repeat: no-repeat;
+			background-size: 60% 100%;
+			animation: loader 2s infinite ease-in-out;
+		}
+		.background {
+			background-color: get-color(shade-35);
+		}
+	}
 
-   &.inversion {
-      .animation {
-         background: linear-gradient(var(--color--f2-1) 0 0),
-            linear-gradient(var(--color--f2-1) 0 0);
-         background-repeat: no-repeat;
-         background-size: 60% 100%;
-         animation: loader 2s infinite ease-in-out;
-      }
-      .background {
-         background-color: var(--color--f2-1);
-      }
-   }
+	&.inversion {
+		.animation {
+			background: linear-gradient(get-color(shade-75) 0 0),
+				linear-gradient(get-color(shade-75) 0 0);
+			background-repeat: no-repeat;
+			background-size: 60% 100%;
+			animation: loader 2s infinite ease-in-out;
+		}
+		.background {
+			background-color: get-color(shade-75);
+		}
+	}
 }
 
 @keyframes loader {
-   0% {
-      background-position: -150% 0, -150% 0;
-   }
-   66% {
-      background-position: 250% 0, -150% 0;
-   }
-   100% {
-      background-position: 250% 0, 250% 0;
-   }
+	0% {
+		background-position:
+			-150% 0,
+			-150% 0;
+	}
+	66% {
+		background-position:
+			250% 0,
+			-150% 0;
+	}
+	100% {
+		background-position:
+			250% 0,
+			250% 0;
+	}
 }

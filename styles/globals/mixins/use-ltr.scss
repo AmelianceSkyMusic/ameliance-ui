@@ -1,0 +1,5 @@
+@mixin use-ltr {
+	[dir="ltr"] & {
+		@content;
+	}
+}

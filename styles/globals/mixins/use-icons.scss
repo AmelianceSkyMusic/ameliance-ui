@@ -1,0 +1,51 @@
+@use "ameliance-use-icons-scss" as amelianceUseIconsScss;
+
+@mixin use-icons($icons, $sizes, $prefix: "icon") {
+	$default-sizes: (
+		"xxs": 8px,
+		"xs": 12px,
+		"sm": 16px,
+		"md": 24px,
+		"lg": 32px,
+		"xl": 48px,
+		"xxl": 64px,
+	);
+	$customPrefix: $prefix;
+
+	$processed-sizes: ();
+
+	@if $sizes == () or $sizes == "all" {
+		$processed-sizes: $default-sizes;
+	} @else if type-of($sizes) == "map" {
+		$processed-sizes: $sizes;
+	} @else if type-of($sizes) == "list" or type-of($sizes) == "string" {
+		$size-list: if(type-of($sizes) == "list", $sizes, ($sizes));
+		@each $size in $size-list {
+			@if type-of($size) == "string" {
+				@if map-has-key($default-sizes, $size) {
+					$processed-sizes: map-merge(
+						$processed-sizes,
+						(
+							$size: map-get($default-sizes, $size),
+						)
+					);
+				} @else {
+					@warn "Size #{$size} is not defined in the default sizes map.";
+				}
+			} @else if type-of($size) == "map" {
+				$processed-sizes: map-merge($processed-sizes, $size);
+			} @else {
+				@warn "Invalid size specification: #{$size}";
+			}
+		}
+	} @else {
+		@error "The $sizes argument must be a map, a list, or a string.";
+	}
+
+	@each $size, $value in $processed-sizes {
+		@include amelianceUseIconsScss.useIcons($icons, $prefix: "#{$customPrefix}-#{$size}--") {
+			width: $value;
+			height: $value;
+		}
+	}
+}

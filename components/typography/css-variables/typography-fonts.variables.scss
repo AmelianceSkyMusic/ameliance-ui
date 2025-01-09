@@ -1,7 +1,3 @@
-$font--name--primary: "Montserrat";
-$font--name--secondary: "Montserrat";
-$font--name--tertiary: "";
-
-$font-family--primary: $font--name--primary, system-ui, sans-serif, serif;
-$font-family--secondary: $font--name--secondary, system-ui, sans-serif, serif;
-$font-family--tertiary: $font--name--tertiary, monospace, system-ui, sans-serif, serif;
+$font-family--primary: var(--a--font--primary), system-ui, sans-serif, serif;
+$font-family--secondary: var(--a--font--secondary), system-ui, sans-serif, serif;
+$font-family--monospace: var(--a--font--monospace), monospace, system-ui, sans-serif, serif;

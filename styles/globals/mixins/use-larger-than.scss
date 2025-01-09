@@ -1,0 +1,5 @@
+@mixin use-larger-than($breakpoint) {
+	@media (min-width: $breakpoint) {
+		@content;
+	}
+}

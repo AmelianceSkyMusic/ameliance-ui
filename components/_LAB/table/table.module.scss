@@ -1,14 +1,14 @@
 .root {
-   @apply flex
-	w-full
-	border-collapse
-	flex-col
-	overflow-y-auto
-	overflow-x-hidden
-	text-left;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-collapse: collapse;
+	text-align: left;
 }
 
 .body {
-   @apply flex
-	flex-col;
+	display: flex;
+	flex-direction: column;
 }

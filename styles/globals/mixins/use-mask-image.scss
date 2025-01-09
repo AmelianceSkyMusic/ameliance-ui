@@ -1,4 +1,4 @@
-@mixin useMaskImage($path, $img) {
-	mask-image: url($path + $img + ".svg");
+@mixin use-mask-image($path, $img) {
 	-webkit-mask-image: url($path + $img + ".svg");
+	mask-image: url($path + $img + ".svg");
 }

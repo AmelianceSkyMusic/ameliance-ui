@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { join } from 'ameliance-scripts/scripts/join';
+import { join } from 'ameliance-scripts';
 
 export type MainElement = HTMLElement;
 

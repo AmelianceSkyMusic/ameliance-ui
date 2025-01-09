@@ -1,0 +1,54 @@
+@use "../../../styles/globals/" as *;
+
+:root {
+	$button-color-map: (
+		color: shade-75,
+		color--hover: shade-75,
+		color--active: shade-75,
+
+		background: shade-60,
+		background--hover: shade-55,
+		background--active: shade-65,
+
+		border: shade-35,
+		border--hover: shade-50,
+		border--active: shade-40,
+
+		secondary--color: shade-35,
+		secondary--color--hover: shade-50,
+		secondary--color--active: shade-40,
+
+		secondary--border: none,
+		secondary--border--hover: none,
+		secondary--border--active: none,
+
+		secondary--background: shade-70,
+		secondary--background--hover: shade-65,
+		secondary--background--active: shade-75,
+
+		text--color: shade-35,
+		text--color--hover: shade-50,
+		text--color--active: shade-40,
+
+		text--background: none,
+		text--background--hover: shade-65,
+		text--background--active: shade-75,
+	);
+	$prefix: "--a--button--";
+	@each $name, $color-key in $button-color-map {
+		#{$prefix + $name}: get-color($color-key);
+	}
+}
+
+:root,
+html[data-ameliance-ui-theme="dark"] {
+	$button-color-map-dark: (
+		color: shade-35,
+		color--hover: shade-35,
+		color--active: shade-35,
+	);
+	$prefix: "--a--button--";
+	@each $name, $color-key in $button-color-map-dark {
+		#{$prefix + $name}: get-color($color-key);
+	}
+}

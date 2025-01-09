@@ -1,0 +1,5 @@
+@mixin use-selected {
+	&.selected {
+		@content;
+	}
+}

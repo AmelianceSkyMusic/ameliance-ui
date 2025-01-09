@@ -1,0 +1,11 @@
+@mixin use-mask-svg-icon() {
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	mask-position: center;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	display: flex;
+	flex: 1;
+	background-color: currentColor;
+}

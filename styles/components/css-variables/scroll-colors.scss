@@ -1,0 +1,14 @@
+@use "../../../styles/globals/" as *;
+
+:root {
+	$button-color-map: (
+		color--background: shade-80,
+		color--thumb: shade-70,
+		color--track: shade-80,
+	);
+
+	$prefix: "--a--scroll--";
+	@each $name, $color-key in $button-color-map {
+		#{$prefix + $name}: get-color($color-key);
+	}
+}

@@ -1,9 +1,18 @@
 export const SCREEN_SIZES = {
-	xx: Infinity,
-	xl: 1179,
-	lg: 1023,
-	md: 767,
-	sm: 539,
-	xs: 479,
-	ss: 359,
-};
+	desktopXl: 1920,
+	desktopLg: 1536,
+	desktopMd: 1440,
+	desktopSm: 1366,
+
+	tabletXl: 1280,
+	tabletLg: 1024,
+	tabletMd: 960,
+	tabletSm: 768,
+
+	mobileXl: 540,
+	mobileLg: 480,
+	mobileMd: 360,
+	mobileSm: 0,
+} as const;
+
+export type ScreenSizes = keyof typeof SCREEN_SIZES;

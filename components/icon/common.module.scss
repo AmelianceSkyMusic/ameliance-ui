@@ -1,0 +1,17 @@
+@use "../../styles/globals/" as *;
+
+.root {
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+	color: get-color(shade-35);
+	@include use-disabled {
+		opacity: 60%;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+	&.clickable {
+		@extend %set-clickable;
+	}
+}

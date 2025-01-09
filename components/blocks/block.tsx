@@ -1,35 +1,36 @@
 import type { ComponentProps, ElementType } from 'react';
 import { forwardRef } from 'react';
 
+import { join } from 'ameliance-scripts';
+
 import { Component } from '../_LAB/component';
+import type { ReactHTMLElementAttributes } from '../types/react-html-element-attributes';
 import { getGridClass } from './helpers/grid';
 import type { Grid } from './types/grid';
 
-import { join } from 'ameliance-scripts/scripts/join';
-
 export type BlockElement = ComponentProps<ElementType>;
 
-export interface BlockProps extends Omit<ReactHTMLElementAttributes<BlockElement>, 'ref'> {
-   component?: ElementType;
-   grid?: Grid;
-}
+export type BlockProps = {
+	component?: ElementType;
+	grid?: Grid;
+} & Omit<ReactHTMLElementAttributes<BlockElement>, 'ref'>;
 
 export const Block = forwardRef<BlockElement, BlockProps>(
-   ({ component = 'div', grid, children, className, ...rest }, ref) => {
-      const gridClass = grid && getGridClass(grid);
+	({ component = 'div', grid, children, className, ...rest }, ref) => {
+		const gridClass = grid && getGridClass(grid);
 
-      const attributes = {
-         className: join(className, gridClass),
-         ref,
-         ...rest,
-      };
+		const attributes = {
+			className: join(className, gridClass),
+			ref,
+			...rest,
+		};
 
-      return (
-         <Component as={component} {...attributes}>
-            {children}
-         </Component>
-      );
-   },
+		return (
+			<Component as={component} {...attributes}>
+				{children}
+			</Component>
+		);
+	},
 );
 
 Block.displayName = 'Block';

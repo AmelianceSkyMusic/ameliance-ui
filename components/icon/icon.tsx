@@ -1,35 +1,39 @@
 import { forwardRef } from 'react';
 
+import { join } from 'ameliance-scripts';
+
+import type { ComponentSizes } from '../types/component-sizes';
+
 import c from './icon.module.scss';
 
-import { join } from 'ameliance-scripts/scripts/join';
+export type IconElement = HTMLSpanElement;
 
-export type IconElement = HTMLDivElement;
-
-export type IconProps = React.ComponentPropsWithoutRef<'div'> & {
-   size?: ComponentSizes;
-   height?: string | number;
-   width?: string | number;
+export type IconProps = React.ComponentPropsWithoutRef<'span'> & {
+	size?: ComponentSizes;
+	width?: string | number;
+	height?: string | number;
+	clickable?: boolean;
 };
 
 export const Icon = forwardRef<IconElement, IconProps>(
-   ({ size = 'default', width, height, onClick, children, className, style, ...rest }, ref) => {
-      const componentClass = [onClick && 'clickable', size && c[size]];
+	({ size = 'md', width, height, onClick, children, className, style, ...rest }, ref) => {
+		// const componentClass = [onClick && 'clickable', size && c[size]];
+		const componentClass = [onClick && c.clickable, size && c[size]];
 
-      const customSizeStyle = size === 'custom' && width && height ? { width, height } : {};
+		const customSizeStyle = size === 'custom' && width && height ? { width, height } : {};
 
-      return (
-         <div
-            className={join(c.root, className, componentClass)}
-            onClick={onClick}
-            ref={ref}
-            style={{ ...style, ...customSizeStyle }}
-            {...rest}
-         >
-            {children}
-         </div>
-      );
-   },
+		return (
+			<span
+				className={join(c.size, className, componentClass)}
+				onClick={onClick}
+				ref={ref}
+				style={{ ...style, ...customSizeStyle }}
+				{...rest}
+			>
+				{children}
+			</span>
+		);
+	},
 );
 
 Icon.displayName = 'Icon';

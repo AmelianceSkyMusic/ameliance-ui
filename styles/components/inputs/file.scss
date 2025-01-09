@@ -1,34 +1,36 @@
+@use "../../globals/" as *;
+
 input[type="file"] {
-   cursor: pointer;
+	cursor: pointer;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-   visibility: hidden;
-   width: 10px;
-   height: 0;
-   margin: 0;
-   padding: 0;
-   color: transparent;
+	width: 10px;
+	height: 0;
+	padding: 0;
+	margin: 0;
+	color: transparent;
+	visibility: hidden;
 }
 
 input[type="file"]::before {
-   display: inline-block;
-   height: 24px;
-   padding: 3px 8px 0px 8px;
-   border: 1px solid var(--a--color--f1-1);
-   border-radius: 4px;
-   color: var(--a--color--f1-1);
-   vertical-align: middle;
-   white-space: nowrap;
-   cursor: pointer;
-   // outline: none;
-   user-select: none;
-   content: "Select files";
-   background-color: none;
+	display: inline-block;
+	height: 24px;
+	padding: 3px 8px 0px 8px;
+	color: get-color(shade-35);
+	white-space: nowrap;
+	vertical-align: middle;
+	content: "Select files";
+	user-select: none;
+	background-color: none;
+	// outline: none;
+	border: 1px solid get-color(shade-35);
+	border-radius: 4px;
+	cursor: pointer;
 }
 
 input[type="file"]:hover::before {
-   border: 1px solid var(--a--color--f1-1);
+	border: 1px solid get-color(shade-35);
 }
 
 // input[type="file"]:active {
@@ -36,5 +38,5 @@ input[type="file"]:hover::before {
 // }
 
 input[type="file"]:active::before {
-   border: 1px solid var(--a--color--f1-1);
+	border: 1px solid get-color(shade-35);
 }

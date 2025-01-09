@@ -1,0 +1,9 @@
+@use "../functions/get-color" as *;
+
+@mixin use-focus-visible {
+	&:focus-visible {
+		outline: 2px solid get-color(shade-50);
+		outline-offset: 2px;
+		@content;
+	}
+}

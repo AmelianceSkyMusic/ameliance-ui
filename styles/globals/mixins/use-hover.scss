@@ -1,0 +1,40 @@
+// @mixin use-hover($time: 150ms) {
+// 	@media (hover: hover) {
+// 		&:hover {
+// 			cursor: pointer;
+// 			user-select: none;
+// 			transition:
+// 				background-color $time ease-in-out,
+// 				color $time ease-in-out,
+// 				border $time ease-in-out;
+// 			@content;
+// 		}
+// 	}
+// }
+
+@mixin use-hover($time: 300ms) {
+	$in-time: 0ms;
+	transition:
+		background-color $time ease-in-out,
+		color $time ease-in-out,
+		border $time ease-in-out,
+		filter $time ease-in-out;
+	@media (hover: hover) {
+		&:hover {
+			user-select: none;
+			transition:
+				background-color $in-time ease-in-out,
+				color $in-time ease-in-out,
+				border $in-time ease-in-out,
+				filter $in-time ease-in-out;
+			cursor: pointer;
+			@content;
+		}
+	}
+
+	@media (hover: none) {
+		&:active {
+			@content;
+		}
+	}
+}

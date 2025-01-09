@@ -1,0 +1,6 @@
+@mixin use-clicked {
+	&:active {
+		transition: 0s;
+		@content;
+	}
+}

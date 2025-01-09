@@ -1,0 +1,5 @@
+@mixin use-dark {
+	[data-ameliance-ui-theme="dark"] & {
+		@content;
+	}
+}

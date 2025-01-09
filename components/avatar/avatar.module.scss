@@ -22,8 +22,8 @@
 //    width: 54px;
 //    height: 54px;
 //    border-radius: 50%;
-//    color: var(--color--f2-1);
-//    background-color: var(--color--e1-0);
+//    color: get-color(shade-75);
+//    background-color: get-color(shade-65);
 //    .char {
 //       opacity: 70%;
 //    }
@@ -38,5 +38,5 @@
 // }
 
 // .clickable {
-//    @include clickable;
+//    @extend %set-clickable;
 // }

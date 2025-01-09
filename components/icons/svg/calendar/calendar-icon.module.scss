@@ -1,0 +1,8 @@
+@use "../extends.scss" as *;
+
+.root {
+	$icon-name: "calendar";
+	-webkit-mask-image: url($icon-name + ".svg");
+	mask-image: url($icon-name + ".svg");
+	@extend %icon;
+}

@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
-// @ts-ignore
-import type { FieldErrors, FieldValues, TFieldValues } from 'react-hook-form';
+import type { FieldErrors, FieldValues } from 'react-hook-form';
+
+import { join } from 'ameliance-scripts';
 
 import { Typography } from '../typography';
 
@@ -8,41 +9,39 @@ import typography from '../typography/typography.module.scss';
 import cs from './common-style.module.scss';
 import c from './text-area.module.scss';
 
-import { join } from 'ameliance-scripts/scripts/join';
-
 export type TextAreaElement = HTMLTextAreaElement;
 
 export type TextAreaProps = React.ComponentPropsWithoutRef<'textarea'> & {
-   register?: FieldValues;
-   errors?: FieldErrors<TFieldValues>;
+	register?: FieldValues;
+	errors?: FieldErrors<FieldValues>;
 };
 
 export const TextArea = forwardRef<TextAreaElement, TextAreaProps>(
-   ({ register, errors, placeholder, className, children, ...rest }, ref) => {
-      const errorMessage = errors ? errors[register?.name]?.message : '';
+	({ register, errors, placeholder, className, children, ...rest }, ref) => {
+		const errorMessage = errors ? errors[register?.name]?.message : '';
 
-      return (
-         <div className={cs.container}>
-            <Typography component="h5">{children}</Typography>
-            <div className={cs.inputBlockContainer}>
-               <label>
-                  <textarea
-                     className={join(cs.input, c.root, typography.input, className)}
-                     placeholder={placeholder}
-                     ref={ref}
-                     {...register}
-                     {...rest}
-                  />
-               </label>
-               {errors && (
-                  <Typography component="p2" className={join(cs.error)}>
-                     {typeof errorMessage === 'string' && errorMessage}
-                  </Typography>
-               )}
-            </div>
-         </div>
-      );
-   },
+		return (
+			<div className={cs.container}>
+				<Typography component="h5">{children}</Typography>
+				<div className={cs.inputBlockContainer}>
+					<label>
+						<textarea
+							className={join(cs.input, c.root, typography.input, className)}
+							placeholder={placeholder}
+							ref={ref}
+							{...register}
+							{...rest}
+						/>
+					</label>
+					{errors && (
+						<Typography component="p2" className={join(cs.error)}>
+							{typeof errorMessage === 'string' && errorMessage}
+						</Typography>
+					)}
+				</div>
+			</div>
+		);
+	},
 );
 
 TextArea.displayName = 'TextArea';

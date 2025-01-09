@@ -1,47 +1,69 @@
 @use "../../styles/globals/" as *;
 
 .root {
-   text-underline-offset: 4px;
-   color: var(--a--color--link);
-   text-decoration: underline;
+	text-underline-offset: 4px;
+	color: var(--a--link--color);
+	text-decoration: underline;
 
-   &.noUnderline {
-      text-decoration: none;
-   }
+	word-wrap: break-word;
 
-   @include inverted {
-      color: var(--a--color--link-inversion);
-   }
+	&.noUnderline {
+		text-decoration: none;
+	}
 
-   @include hover-animation;
+	@include use-inverted {
+		color: var(--a--link--inversion);
+	}
 
-   &.hover {
-      @include hover {
-         text-underline-offset: 4px;
-         color: var(--a--color--link-hover);
-         text-decoration: underline;
+	@include hover-animation;
 
-         &.noUnderline {
-            text-decoration: none;
-         }
+	@include use-focus-visible {
+		border-radius: 2px;
+	}
 
-         @include inverted {
-            color: var(--a--color--link-inversion-hover);
-         }
-      }
-   }
+	&.hover {
+		@include use-hover {
+			text-underline-offset: 4px;
+			color: var(--a--link--hover);
+			text-decoration: underline;
 
-   @include active {
-      color: var(--a--color--link-active);
-      @include inverted {
-         color: var(--a--color--link-inversion-active);
-      }
-   }
+			&.noUnderline {
+				text-decoration: none;
+			}
 
-   @include disabled {
-      color: var(--a--color--link-disabled);
-      @include inverted {
-         color: var(--a--color--link-inversion-disabled);
-      }
-   }
+			@include use-inverted {
+				color: var(--a--link--inversion--hover);
+			}
+		}
+	}
+
+	&.active {
+		text-underline-offset: 4px;
+		color: var(--a--link--active);
+		text-decoration: underline;
+		cursor: not-allowed;
+		pointer-events: none;
+
+		&.noUnderline {
+			text-decoration: none;
+		}
+
+		@include use-inverted {
+			color: var(--a--link--inversion--active);
+		}
+	}
+
+	@include use-clicked {
+		color: var(--a--link--clicked);
+		@include use-inverted {
+			color: var(--a--link--inversion--clicked);
+		}
+	}
+
+	@include use-disabled {
+		color: var(--a--link--disabled);
+		@include use-inverted {
+			color: var(--a--link--inversion--disabled);
+		}
+	}
 }

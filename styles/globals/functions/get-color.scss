@@ -1,0 +1,79 @@
+@use "./get-sorted-list" as *;
+
+
+//* Map of colors using in a project
+$colors: (
+	shade-05, // 11
+	shade-10, // 12
+	shade-15, // 13
+	shade-20, // 14
+	shade-25, // 15
+	shade-30, // 16
+	shade-35, // 17
+	shade-40, // 18
+	shade-45, // 19
+	shade-50, // 20
+	shade-55, // 21
+	shade-60, // 22
+	shade-65, // 23
+	shade-70, // 24
+	shade-75, // 25
+	shade-80, // 26
+	shade-85, // 27
+	shade-90, // 28
+	shade-95, // 29
+	shade-opacity-05,
+	shade-opacity-10,
+	shade-opacity-15,
+	shade-opacity-20,
+	shade-opacity-25,
+	shade-opacity-30,
+	shade-opacity-35,
+	shade-opacity-40,
+	shade-opacity-45,
+	shade-opacity-50,
+	shade-opacity-55,
+	shade-opacity-60,
+	shade-opacity-65,
+	shade-opacity-70,
+	shade-opacity-75,
+	shade-opacity-80,
+	shade-opacity-85,
+	shade-opacity-90,
+	shade-opacity-95,
+	low-opacity-01,
+	low-opacity-02,
+	low-opacity-03,
+	low-opacity-04,
+	low-opacity-05,
+	low-opacity-06,
+	low-opacity-07,
+	low-opacity-08,
+	low-opacity-09,
+	low,
+	high-opacity-01,
+	high-opacity-02,
+	high-opacity-03,
+	high-opacity-04,
+	high-opacity-05,
+	high-opacity-06,
+	high-opacity-07,
+	high-opacity-08,
+	high-opacity-09,
+	high,
+	none,
+	transparent,
+	error
+);
+
+//* Mixin used for checking if color exists
+@function get-color($color) {
+	$prefix: "--a--color--";
+
+	@if index($colors, $color) {
+		$color-var: $prefix + $color;
+		@return var(#{$color-var});
+	} @else {
+		@error "Unknown color: '#{$color}'";
+	}
+}

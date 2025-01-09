@@ -10,7 +10,7 @@
 	opacity: 60%;
 
 	cursor: pointer;
-	background-color: var(--color--b1-0);
+	background-color: get-color(shade-80);
 
 	animation-name: hide-blackout;
 	animation-duration: 0.3s;
@@ -21,7 +21,7 @@
 	animation-name: show-blackout;
 	animation-duration: 0.3s;
 	animation-fill-mode: forwards;
-	@include disabled;
+	@include use-disabled;
 }
 
 @keyframes show-blackout {

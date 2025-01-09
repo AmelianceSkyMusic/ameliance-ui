@@ -1,0 +1,44 @@
+.root {
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 24px;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	background-color: get-color(shade-opacity-90);
+	border-radius: 16px;
+	&:global(.language-ts) {
+		// height: 100%;
+	}
+}
+
+// .root {
+// 	height: 100%;
+// 	color: inherit;
+// 	font-size: inherit;
+// 	line-height: inherit;
+// 	font-family: inherit;
+// 	&:global(.language-ts) {
+// 	}
+// }
+// .container {
+// 	position: relative;
+// 	width: 100%;
+// 	// height: 100%;
+// 	margin: 12px;
+// 	padding: 16px;
+// 	overflow: auto;
+// 	color: inherit;
+// 	font-size: inherit;
+// 	line-height: inherit;
+// 	font-family: inherit;
+// 	background-color: rgb(42, 40, 0);
+// }
+
+.copy {
+	//TODO: make icon sticky to top when scroll
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	color: get-color(shade-opacity-30);
+}

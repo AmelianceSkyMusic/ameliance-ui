@@ -1,0 +1,113 @@
+.root {
+	//TODO: fix fonts with typography????
+	--a--table--border-radius: 16px;
+	font-family: "Montserrat", sans-serif;
+	font-size: inherit;
+	font-size: 12px;
+	line-height: 120%;
+	color: get-color(shade-opacity-05);
+	border-collapse: collapse;
+	background-color: get-color(shade-opacity-90);
+	border-radius: var(--a--table--border-radius);
+
+	thead {
+		position: relative;
+		tr {
+			position: relative;
+			&:hover {
+				th:nth-last-child(2) {
+					border-right: none;
+					border-top-right-radius: var(--a--table--border-radius);
+				}
+			}
+			th {
+				position: relative;
+				padding: 12px;
+				text-align: left;
+				border: 1px solid get-color(shade-opacity-85);
+				border-top: none;
+				border-bottom: none;
+
+				&:first-child {
+					border-left: none;
+					border-top-left-radius: var(--a--table--border-radius);
+				}
+				&:last-child {
+					border-right: none;
+					border-top-right-radius: var(--a--table--border-radius);
+				}
+			}
+		}
+	}
+
+	tbody {
+		position: relative;
+		tr {
+			position: relative;
+			background-color: get-color(shade-opacity-60);
+			@include use-hover {
+				user-select: auto;
+				background-color: get-color(shade-opacity-85);
+				cursor: default;
+			}
+			&:nth-child(even) {
+				background-color: get-color(shade-opacity-70);
+				@include use-hover {
+					user-select: auto;
+					background-color: get-color(shade-opacity-80);
+					cursor: default;
+				}
+			}
+			&:last-child {
+				td:first-child {
+					border-bottom-left-radius: var(--a--table--border-radius);
+				}
+				td:last-child {
+					border-bottom-right-radius: var(--a--table--border-radius);
+				}
+			}
+			td {
+				position: relative;
+				padding: 8px 12px;
+				border: 1px solid get-color(shade-opacity-65);
+				border-top: none;
+				border-bottom: none;
+				&:first-child {
+					border-left: none;
+				}
+				&:last-child {
+					border-right: none;
+				}
+			}
+		}
+	}
+}
+
+.cellCopyIcon,
+.rowCopyIcon,
+.columnCopyIcon {
+	position: absolute;
+	color: get-color(shade-opacity-30);
+}
+
+.cellCopyIcon {
+	top: 0;
+	right: 4px;
+	bottom: 0;
+	z-index: 1;
+	margin: auto 0;
+}
+
+.rowCopyIcon {
+	top: 0;
+	right: -24px;
+	bottom: 0;
+	margin: auto 0;
+}
+
+.columnCopyIcon {
+	right: 0;
+	bottom: -24px;
+	left: 0;
+	margin: 0 auto;
+}

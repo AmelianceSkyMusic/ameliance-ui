@@ -1,27 +1,27 @@
 @use "../../styles/globals/" as *;
 
 .root {
-   gap: 8px;
-   display: flex;
-   align-items: center;
-   padding: 12px 16px;
-   & > * {
-      display: flex;
-      align-items: center;
-      line-height: 100%;
-   }
-   list-style: none;
-   user-select: none;
+	display: flex;
+	padding: 12px 16px;
+	align-items: center;
+	gap: 8px;
+	user-select: none;
+	list-style: none;
+	& > * {
+		display: flex;
+		align-items: center;
+		line-height: 100%;
+	}
 
-   @include clickable;
+	@extend %set-clickable;
 
-   @include hover {
-      background-color: var(--color--b1-1);
-   }
+	@include use-hover {
+		background-color: get-color(shade-75);
+	}
 
-   @include active {
-      background-color: var(--color--b1-0);
-   }
+	@include use-clicked {
+		background-color: get-color(shade-80);
+	}
 
-   @include disabled;
+	@include use-disabled;
 }
