@@ -6,6 +6,6 @@
 	mask-repeat: no-repeat;
 	mask-size: contain;
 	display: flex;
-	flex: 1;
+	flex-shrink: 0;
 	background-color: currentColor;
 }
