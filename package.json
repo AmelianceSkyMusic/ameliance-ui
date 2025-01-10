@@ -1,11 +1,11 @@
 {
    "name": "ameliance-ui",
    "version": "0.0.1",
-   "dependencies": {
-      "ameliance-scripts": "^0.3.2"
-   },
    "devDependencies": {
       "ameliance-use-icons-scss": "^1.0.2",
-      "sass": "^1.77.0"
+      "sass": "^1.83.1"
+   },
+   "dependencies": {
+      "ameliance-scripts": "^0.4.106"
    }
 }
