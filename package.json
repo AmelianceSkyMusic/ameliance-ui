@@ -1,9 +1,4 @@
 {
 	"name": "ameliance-ui",
-	"version": "0.0.1",
-	"peerDependencies": {
-		"ameliance-scripts": "^0.4.106",
-		"ameliance-use-icons-scss": "^1.0.2",
-		"sass": "^1.83.1"
-	}
+	"version": "0.0.1"
 }
