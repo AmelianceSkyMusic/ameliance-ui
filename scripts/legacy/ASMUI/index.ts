@@ -4,8 +4,8 @@ import { renderFullscreenPopup } from './render-fullscreen-popup';
 import { renderLoader } from './render-loader';
 
 export default {
-   renderFullscreenPopup,
-   renderLoader,
-   renderBlackout,
-   removeBlackout,
+	renderFullscreenPopup,
+	renderLoader,
+	renderBlackout,
+	removeBlackout,
 };

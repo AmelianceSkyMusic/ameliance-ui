@@ -51,7 +51,11 @@ export const Code = forwardRef<CodeElement, CodeProps>(({ children, className, .
 		}
 	};
 	return (
-		<pre className={join(c.root, typography.code)} ref={mergeRefs([preRef, ref])} {...rest}>
+		<pre
+			className={join(c.root, typography.code, className)}
+			ref={mergeRefs([preRef, ref])}
+			{...rest}
+		>
 			{/* <code className={join(c.code, className)} ref={codeRef}> */}
 			{children}
 			{isCode && (

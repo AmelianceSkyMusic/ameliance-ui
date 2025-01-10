@@ -7,22 +7,22 @@ type Position = {
 
 type Direction = 'left' | 'right' | 'up' | 'down' | null;
 
-interface UseSwipeParams {
+type UseSwipeParams = {
 	ref: React.RefObject<HTMLElement>;
 	wayDirection?: 'horizontal' | 'vertical';
 	targetDirection?: Direction;
 	swipeOffset?: number;
 	moveOffset?: number;
-}
+};
 
-interface UseSwipeReturn {
+type UseSwipeReturn = {
 	startTouchPosition?: Position;
 	moveTouchPosition: Position;
 	endTouchPosition: Position;
 	swipeDirection: Direction;
 	moveDirection: Direction;
 	difference: number | null;
-}
+};
 
 export function useSwipe({
 	ref,
@@ -31,13 +31,16 @@ export function useSwipe({
 	swipeOffset = 10,
 	moveOffset = 1,
 }: UseSwipeParams): UseSwipeReturn {
-	const [elementPosition]	= useState(ref.current?.style.position || 'static');
-	const [startTouchPosition, setStartTouchPosition]	= useState<UseSwipeReturn['startTouchPosition']>(null);
-	const [moveTouchPosition, setMoveTouchPosition]	= useState<UseSwipeReturn['moveTouchPosition']>(null);
-	const [endTouchPosition, setEndTouchPosition]	= useState<UseSwipeReturn['endTouchPosition']>(null);
-	const [swipeDirection, setSwipeDirection]	= useState<UseSwipeReturn['swipeDirection']>(null);
-	const [moveDirection, setMoveDirection]	= useState<UseSwipeReturn['moveDirection']>(null);
-	const [difference, setDifference]	= useState<UseSwipeReturn['difference']>(null);
+	const [elementPosition] = useState(ref.current?.style.position || 'static');
+	const [startTouchPosition, setStartTouchPosition] =
+		useState<UseSwipeReturn['startTouchPosition']>(null);
+	const [moveTouchPosition, setMoveTouchPosition] =
+		useState<UseSwipeReturn['moveTouchPosition']>(null);
+	const [endTouchPosition, setEndTouchPosition] =
+		useState<UseSwipeReturn['endTouchPosition']>(null);
+	const [swipeDirection, setSwipeDirection] = useState<UseSwipeReturn['swipeDirection']>(null);
+	const [moveDirection, setMoveDirection] = useState<UseSwipeReturn['moveDirection']>(null);
+	const [difference, setDifference] = useState<UseSwipeReturn['difference']>(null);
 
 	useEffect(() => {
 		const elem = ref?.current;
@@ -99,7 +102,7 @@ export function useSwipe({
 				elem.removeEventListener('touchend', handleTouchEnd);
 			}
 		};
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {

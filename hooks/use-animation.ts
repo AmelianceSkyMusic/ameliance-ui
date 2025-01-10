@@ -1,19 +1,19 @@
 import { useState } from 'react';
 
-interface UseAnimation {
+type UseAnimation = {
 	startAnimationClass?: string;
 	endAnimationClass?: string;
 	onAnimationEndAction: () => void;
 	autostart?: boolean;
-}
+};
 
-interface UseAnimationReturn {
+type UseAnimationReturn = {
 	animationClass: string | undefined;
 	currentAnimation: 'start' | 'end';
 	handleOnAnimationEnd: () => void;
 	runStartAnimation: () => void;
 	runEndAnimation: () => void;
-}
+};
 
 export function useAnimation({
 	startAnimationClass,

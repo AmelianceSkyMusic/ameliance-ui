@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 
-interface UseTransition {
+type UseTransition = {
 	startTransitionClass: string;
 	// endTransitionClass: string;
 	onTransitionEndAction: () => void;
 	autostart?: boolean;
-}
+};
 
-interface UseTransitionReturn {
+type UseTransitionReturn = {
 	transitionClass: string | null;
 	handleOnTransitionEnd: () => void;
 	runStartTransition: () => void;
 	runEndTransition: () => void;
-}
+};
 
 export function useTransition({
 	startTransitionClass,

@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react';
 import type { FieldErrors, FieldValues } from 'react-hook-form';
 
+import { join } from 'ameliance-scripts';
+
 import { Typography } from '../typography';
 
 import cs from '../inputs/common-style.module.scss';
@@ -23,7 +25,7 @@ export const ToggleSwitch = forwardRef<ToggleSwitchElement, ToggleSwitchProps>(
 		const errorMessage = errors ? errors[register?.name]?.message : '';
 
 		return (
-			<div className={cs.container}>
+			<div className={join(cs.container, className)}>
 				{children && <Typography component="h3">{children}</Typography>}
 				<div className={cs.inputBlockContainer}>
 					<label className={c.container}>
